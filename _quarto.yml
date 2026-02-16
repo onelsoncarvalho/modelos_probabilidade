@@ -21,7 +21,6 @@ book:
   page-footer:
     center: 
       - text: "Nelson Geraldo Aquino de Carvalho"
-        href: "https://onelsoncarvalho.github.io"
 
 bibliography: references.bib
 
