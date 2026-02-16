@@ -19,10 +19,11 @@ book:
     - pareto_generalizada.qmd
     - references.qmd
   page-footer:
-    center: 
+    left: 
       - text: "Nelson Geraldo Aquino de Carvalho"
+    right:
       - text: "https://onelsoncarvalho.github.io"
-
+      
 bibliography: references.bib
 
 format:
