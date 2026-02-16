@@ -1,0 +1,211 @@
+# Distribuição Qui-Quadrado
+
+A distribuição do qui-quadrado contínua, é especificada pelos graus de liberdade e o parâmetro de não centralidade. A distribuição é positivamente assimétrica, mas a assimetria diminui com mais graus de liberdade.
+Graus de liberdade, considerando um conjunto de dados qualquer, é o número de valores deste conjunto de dados que podem variar após terem sido impostas certas restrições a todos os valores.
+Muito poucas observações do mundo real seguem uma distribuição qui- quadrado. O principal objetivo das distribuições qui-quadrado é realizar testes de hipóteses, não descrever distribuições do mundo real. Em contraste, a maioria das outras distribuições amplamente utilizadas, como a distribuição normal ou a distribuição de Poisson, podem descrever coisas úteis, como o peso ao nascer de recém-nascidos ou o número de casos de doença por ano, respectivamente.
+
+::: {.definition .alert .alert-success}
+**Definição**
+
+  Seja $X$ uma variável aleatória contínua, com suporte nos números reais positivos do raio de $X$:
+
+  $R_X = [0, \infty]$
+
+  Sendo $n \in \mathbb{N}$, dizemos que X tem Distribuição Qui-Quadrado com $n$ graus de liberdade se e somente se sua função densidade de probailidade for dada por:
+
+  $$
+    f_X(x) =
+    \begin{dcases}
+      cx^{n/2-1}e^{\bigl(-\frac{1}{2}x \bigr)}, &\quad x \in R_X\\
+      0, &\quad x \notin R_X
+    \end{dcases}
+  $$
+
+  Onde c é a constante:
+
+  $$
+    c = \frac{1}{2^{n/2}\Gamma(n/2)} 
+  $$
+
+  e $\Gamma()$ é a função Gama.
+
+:::
+
+  A notação a seguir indica que $X$ tem distribuição Qui-Quadrado, com $n$ graus de liberdade: $X \sim \chi^{2}(n)$
+
+## Função de Distribuição Acumulada
+
+::: {.definition .alert .alert-success}
+**Definição**
+
+  Seja $X$ uma variável aleatória contínua, com função de distribuição de probabilidade $f(x)$, a Função de Distribuição Acumulada de X é dada por: 
+  $$
+    F(X) = \int_{0}^{x} f(t)dt
+  $$
+
+Mudança de variável: $s = t/2$
+
+  $$
+  \begin{align}
+    F(x) = \int_{-\infty}^{x} f(t)dt \\
+    = \int_{-\infty}^{x} ct^{n/2-1} e^{\bigl(-\frac{1}{2}t\bigr)}dt \\
+    = c \int_{-\infty}^{x/2} (2s)^{n/2-1} e^{-s}2ds \\
+    = c \cdot 2^{n/2} \int_{-\infty}^{x/2} s^{n/2-1} e^{-s}ds \\
+    = \frac{1}{2^{n/2}\Gamma(n/2)} 2^{n/2} \int_{-\infty}^{x/2} s^{n/2-1} e^{-s}ds \\
+    = \frac{1}{\Gamma(n/2)} \int_{-\infty}^{x/2} s^{n/2-1} e^{-s}ds \\
+    = \frac{\gamma(n/2, x/2)}{\Gamma(n/2)}
+  \end{align}
+  $$
+
+:::
+
+Atualmente, é possível utilizar algoritmos computacionais que calculam diretamente os valores de $F(X)$. Antigamente, quando os computadores não eram tão acessíveis, costumavam procurar por valores de $F(X)$ nas tabelas de Distribuição Qui-Quadrada, odne $F(X)$ é registrada para diversos valores de $x$ e $n$.
+
+## Valor Esperado
+
+::: {.definition .alert .alert-success}
+**Definição**
+
+  Seja $X$ uma variável aleatória contínua com função densidade de probabilidade $f(x)$, sua esperança (valor esperado) é dado por:
+
+  $$
+    E(X) = \int_{0}^{\infty} x \cdot f(x) dx
+  $$
+
+Usando a Integração Por Partes:
+
+  $$
+  \begin{align}
+  E(X) = \int_{0}^{\infty} x \cdot f(x)dx \\
+  = \int_{0}^{\infty} x \cdot cx^{n/2-1} e^{\bigl(-\frac{1}{2}x\bigr)}dx \\
+  = c \int_{0}^{\infty} x^{n/2} e^{\bigl(-\frac{1}{2}x \bigr)}dx \\
+  = c \biggl\{\biggl[-x^{n/2} 2e^{\bigl(-\frac{1}{2}x\bigr)}\biggr]_{0}^{\infty}\\
+  + \int_{0}^{\infty} \frac{n}{2} x^{n/2-1} 2e^{-\bigl(\frac{1}{2}x\bigr)}dx\biggr\} \\
+  = c \biggl\{(0 -0) + n \int_{0}^{\infty} x^{n/2-1} e^{\bigl(-\frac{1}{2}x\bigr)}dx \biggr\} \\
+  = n \int_{0}^{\infty} cx^{n/2-1} e^{\bigl(-\frac{1}{2}x\bigr)}dx \\
+  = n \int_{0}^{\infty} f(x)dx \\
+  = n
+  \end{align}
+  $$
+
+:::
+
+Portanto, o Valor Esperado da Distribuição Qui-Quadrado é dado por: $E(X) = n$.
+
+## Variância
+
+::: {.definition .alert .alert-success}
+**Definição**
+
+  Seja $X$ uma variável aleatória contínua com função densidade de probabilidade $f(x)$, sua variância é dada por:
+
+  $$
+    Var(X) = E[X^2] - (E[X])^2
+  $$
+
+Usando a Integração por Partes:
+
+  $$
+  \begin{align}
+    E[X^2] = \int_{0}^{\infty} x^2 f(x)dx \\
+    = \int_{0}^{\infty} x^2 \cdot cx^{n/2-1} e^{\bigl(-\frac{1}{2c}x\bigr)}dx \\
+    = c \int_{0}^{\infty} x^{n/2+1} e^{\bigl(-\frac{1}{2}\bigr)} = c \biggl\{\biggl[-x^{n/2+1}e^{\bigl(-\frac{1}{2}x\bigr)}\biggr]_{0}^{\infty} \\
+    + \int_{0}^{\infty} \biggl(\frac{n}{2} + 1\biggr)x^{n/2} e^{\bigl(-\frac{1}{2}\bigr)}dx \biggr\} \\
+    = c\biggl\{ (0-0)+(n+2) \int_{0}^{\infty} x^{n/2} e^{\bigl(- \frac{1}{2}x\bigr)}dx \biggr\} \\
+    = c(n+2)\biggl\{\int_{0}^{\infty}x^{n/2} e^{\bigl(-\frac{1}{2}x\bigr)}dx \biggr\} \\
+    = c(n+2)\biggl\{\biggl[-x^{n/2} 2e^{\bigl(-\frac{1}{2}x\bigr)}\biggr]_{0}^{\infty} + \int_{0}^{\infty}\frac{n}{2}x^{n/2-1}  2e^{\bigl(-\frac{1}{2}x\bigr)}dx \biggr\} \\
+    = c(n + 2)\biggl\{(0-0) + n \int_{0}^{\infty} x^{n/2-1} e^{\bigl(- \frac{1}{2}x\bigr)}dx \biggr\} \\
+    = (n+ 2)n \int_{0}^{\infty} cx^{n/2-1} e^{\bigl(-\frac{1}{2}x\bigr)}dx
+    = (n +2)n \int_{0}^{\infty}f(x)dx \\
+    = (n+2)n
+  \end{align}
+  $$
+
+  Daí, temos que:
+
+  $$
+  \begin{align*}
+    E[X]^2 = n^2 \\
+    Var[X] = E[X^2] - E[X]^2 \\
+    = (n+2)n - n^2 = n(n+2 - n) = 2n
+  \end{align*}
+  $$
+:::
+
+Portanto, $Var(X) = 2n$.
+
+## Função Geradora de Momentos
+
+::: {.definition .alert .alert-success}
+**Definição**
+
+  Seja $X$ uma variável aleatória contínua. Se seu valor esperado $E(e^{tX})$ existir, e for finito para todos os números reais $t$ pertencendo a um intervalo fechado $[-h, h] \subseteq \mathbb{R}$, com $h >0$, dizemos que $X$ possui função geradora de momentos:
+
+$$
+  M_X(t) = E[e^{tX}]
+$$
+
+Da definição da função geradora de momentos:
+
+$$
+M_X(t) = E[e^{tX}] = \int_0^\infty e^{tx} f_X(x) \, dx
+$$
+
+Então:
+
+$$
+\begin{align*}
+    M_X(t) &= \frac{1}{2^{n / 2} \Gamma(n / 2)} \int_0^\infty x^{(n / 2) - 1} e^{t x - (x / 2)} \, dx \\
+    &= \frac{1}{2^{n / 2} \Gamma(n / 2)} \int_0^\infty x^{(n / 2) - 1} e^{-\left(\frac{1}{2} - t\right) x} \, dx
+\end{align*}
+$$
+
+Substituindo $u = \bigl(\frac{1}{2} - t\bigr)x$
+
+$$
+\begin{align*}
+    &\frac{1}{2^{n / 2} \Gamma(n / 2)} \int_0^\infty x^{(n / 2) - 1} e^{-\left(\frac{1}{2} - t\right) x} \, dx \\
+    &= \frac{1}{2^{n / 2} \Gamma(n / 2) \left(\frac{1}{2} - t\right)} \int_0^\infty \left(\frac{u}{\frac{1}{2} - t}\right)^{(n / 2) - 1} e^{-u} \, du \\
+    &= \frac{1}{2^{n / 2} \Gamma(n / 2) \left(\frac{1}{2} - t\right)^{n / 2}} \int_0^\infty u^{(n / 2) - 1} e^{-u} \, du \\
+    &= \frac{\Gamma(n / 2)}{\Gamma(n / 2)} \left(1 - 2t\right)^{-n / 2} \quad \text{Definição da Função Gama} \\
+    &= \left(1 - 2t\right)^{-n / 2}
+\end{align*}
+$$
+
+Portanto, dado $X \sim \chi_{n}^{2}$ onde $n$ representa os graus de liberdade, a função geradora de momentos de $X$ é:
+
+$$
+  M_X(t) = 
+  \begin{dcases}
+    (1-2t)^{-n/2}, &\quad t < \frac{1}{2} \\
+    \text{ não existe}, &\quad t \geq \frac{1}{2}
+  \end{dcases}
+$$
+
+:::
+
+## Aplicação
+
+Um estatístico, estudando sobre a distribuição de frequências de eventos raros em uma determinada população, está empregando a distribuição do qui-quadrado para testar a independência de variáveis categóricas.
+
+O estatístico definiu uma variável aleatória
+
+$$
+  X \sim \chi^{2}(3)
+$$
+
+Determine a Probabilidade de $X$ estar entre $0.35$ e $7.81$.
+
+**Solução:**
+
+$$
+\begin{align}
+  P(0.35 \leq X \leq 7.81) = P(X \leq 7.81) - P(X < 0.35) \\
+  = P(X \leq 7.81) - P(X \leq 0.35) \\
+  = F(7.81) - F(0.35) \\
+  = 0.95 - 0.05 \\
+  = 0.90
+\end{align}
+$$
+
+Portanto, $P(0.35 \leq X \leq 7.81) = 0.90$.

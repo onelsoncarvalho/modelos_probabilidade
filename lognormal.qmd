@@ -1,0 +1,103 @@
+# Distribuição Lognormal
+
+::: {.definition .alert .alert-success}
+Uma variável $X$ possui distribuição lognormal com função densidade de probabilidade $f(x)$ se e somente se sua função densidade de probabilidade for dada por:
+
+$$
+  f(x) = \frac{e^{-((ln((x-\theta)/m))^{2}/(2\sigma^{2}) )}}{(x-\theta)\sigma\sqrt{2\pi}} \quad x > \theta; m, \sigma > 0
+$$
+
+onde $\sigma$ é o parâmetro de forma (e o desvio padrão do log da distribuição), $\theta$ é o parâmetro de localização e $m$ é o parâmetro de escala (também é a mediana da distribuição).
+:::
+
+Pode ser denotada por $ln N(\mu, \sigma^{2})$.
+
+Se $x = \theta$, então $f(x) = 0$. O caso onde $\sigma = 0$ e $m = 1$ é chamado de distribuição lognormal padrão. O caso onde $\theta$ é igual a zero é chamado de Distribuição Lognormal de 2 parâmetros.
+
+::: {.definition .alert .alert-success}
+
+A equação para a distribuição lognormal padrão é dada por
+
+$$
+  f(x) = \frac{e^{-(ln(x)^{2} / 2\sigma^{2})}}{x\sigma\sqrt{2\pi}} \quad x > 0; \sigma > 0.
+$$
+
+Quando a distribuição lognormal é parametrizada (comumente) por
+
+$$
+  \mu = log(m)
+$$
+
+Onde o parâmetro $\mu$ é a média do log da distribuição. Se a parametrização $\mu$ é usada, então a função densidade de probabilidade da distribuição lognormal é dada por:
+
+$$
+  f(x) = \frac{e^{-(ln(x-\theta) - \mu)^{2} / (2\sigma^2)  }}{(x-\theta)\sigma\sqrt{2\pi}} \quad x > \theta;\sigma>0
+$$
+
+Onde $m$ é explicitamente o parâmetro de escala.
+
+:::
+
+## Função de Distribuição Acumulada
+
+::: {.definition .alert .alert-success}
+A função de distribuição acumulada de uma variável aleatória $X$ com distribuição lognormal é dada por:
+
+$$
+  F(x) = \Theta(\frac{ln(x)}{\sigma}) \quad x \geq 0; \sigma > 0
+$$
+
+Onde $\Theta$ é a função de distribuição acumulada da distribuição normal.
+:::
+
+## Função Quantil
+
+A fórmula para a função quantil de uma distribuição lognormal é dada por:
+
+$$
+  G(p) = e^{\sigma\Theta^{-1}(p)} \quad 0 \leq p < 1; \sigma > 0
+$$
+
+Onde $\Theta^{-1}$ é a função quantil da distribuição normal.
+
+## Valor Esperado
+
+::: {.definition .alert .alert-success}
+  Seja $X$ uma variável aleatória contínua com distribuição lognormal, a média, por definição é dada por:
+
+\begin{align}
+    \int_{-\infty}^{\infty} x \cdot f(x)dx \\
+    &= \int_{0}^{\infty} x \cdot \frac{1}{x\sqrt{2\pi\sigma^{2}}} e^{-\frac{1}{2} \left(\frac{(ln(x) - \mu)^{2}}{\sigma^2}\right)}dx \\
+\end{align}
+ Após desenvolvermos a integral, podemos chegar em: 
+\begin{align}
+    &= e^{(\mu + \frac{1}{2}\sigma^{2})} \int_{-\infty}^{\infty} \frac{1}{\sqrt{2\pi}}e^{(-\frac{1}{2}(t-\sigma)^{2})}dt \\
+    &= e^{(\mu + \frac{1}{2}\sigma^{2})}
+\end{align}
+
+Portanto, a $E(X) = e^{(\mu + \frac{1}{2}\sigma^{2})}$.
+
+:::
+
+## Variância
+
+::: {.definition .alert .alert-success}
+  Seja $X$ uma variável aleatória contínua com valor esperado $E(X)$, sua esperança, pela definição, e no momento $E(X^{2})$ é dada por:
+
+  \begin{align}
+    Var[X] = E[X^{2}] - E[X]^{2} \\
+    = e^{(2\sigma^{2} + 2\mu)} - \biggl[e^{(\mu + \frac{1}{2}\sigma^2)} \biggr]^{2} \\
+    = e^{(2\sigma^{2} + 2\mu)} - e^{(\sigma^{2} + 2\mu)}
+  \end{align}
+
+:::
+
+## Função Geradora de Momentos
+
+A distribuição lognormal não possui Função Geradora de Momentos.
+
+## Aplicações
+
+Uma das principais áreas de aplicações da distribuição lognormal é na análise de preços de ações, onde a distribuição lognormal pode ser útil para identificar o retorno que determinada ação pode ter em determinado período de tempo.
+
+Note que a distribuição lognormal é inclinada com a cauda da direita longa por conta dos baixos valores da média e da alta variância das variáveis aleatórias.

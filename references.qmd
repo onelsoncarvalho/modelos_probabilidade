@@ -1,0 +1,51 @@
+# References {.unnumbered}
+
+- TABOGA, Marco. ``Uniform Distribution", Lectures on Probability theory and mathematical statistics. Disponível em: <https://www.statlect.com/probability-distributions/uniform-distribution>. Acesso em 02 Mar 2024.
+  
+- TABOGA, Marco. ``Exponential Distribution", Lectures on Probability theory and mathematical statistics. Disponível em: <https://www.statlect.com/probability-distributions/exponential-distribution>. Acesso em 02 Mar 2024.}
+
+- GAMMA DISTRIBUTION. Probability Course. Disponível em: <https://www.probabilitycourse.com/chapter4/4_2_4_Gamma_distribution.php}>. Acesso em 02 Mar 2024.
+  
+- TABOGA, Marco. ``Chi-square distribution", Lectures on Probability theory and mathematical statistics. Disponível em: <https://www.statlect.com/probability-distributions/chi-square-distribution>. Acesso em 02 Mar 2024.
+
+- WEIBULL DISTRIBUTIONS. LibreTexts STATISTICS. Disponível em: <https://stats.libretexts.org/Courses/Saint_Mary%27s_College_Notre_Dame/MATH_345__-_Probability_(Kuter)/4%3A_Continuous_Random_Variables/4.6%3A_Weibull_Distributions>. Acesso em 02 mar 2024.
+
+- EXPECTATION OF WEIBULL DISTRIBUTION. Proof Wiki. Disponível em: <https://proofwiki.org/wiki/Expectation_of_Weibull_Distribution>. Acesso em 02 mar 2024.
+
+- RAW MOMENT OF WEIBULL DISTRIBUTION. Proof Wiki. Disponível em: <https://proofwiki.org/wiki/Raw_Moment_of_Weibull_Distribution>. Acesso em 02 mar 2024.
+
+- VARIANCE OF WEIBULL DISTRIBUTION. Proof Wiki. Disponível em: <https://proofwiki.org/wiki/Variance_of_Weibull_Distribution>. Acesso em 02 mar 2024.
+
+- DEFINITION: WEIBULL DISTRIBUTION. Proof Wiki. Disponível em: <https://proofwiki.org/wiki/Definition:Weibull_Distribution>. Acesso em 02 mar 2024.
+
+- SIEGRIST, Kyle. ``The Cauchy Distribution". LibreTexts STATISTICS. Disponível em: <https://stats.libretexts.org/Bookshelves/Probability_Theory/Probability_Mathematical_Statistics_and_Stochastic_Processes_(Siegrist)/05%3A_Special_Distributions/5.32%3A_The_Cauchy_Distribution>. Acesso em 02 mar 2024.
+
+- DEFINITION: CAUCHY DISTRIBUTION. Proof Wiki. Disponível em: <https://proofwiki.org/wiki/Definition:Cauchy_Distribution>. Acesso em 02 mar 2024.
+
+- SIEGRIST, Kyle. The Laplace Distribution. LibreTexts STATISTICS. Disponível em: <https://stats.libretexts.org/Bookshelves/Probability_Theory/Probability_Mathematical_Statistics_and_Stochastic_Processes_(Siegrist)/05%3A_Special_Distributions/5.28%3A_The_Laplace_Distribution>. Acesso em 02 mar 2024.
+
+- TABOGA, Marco. ``Normal distribution", Lectures on probability theory and mathematical statistics. Disponível em: <https://www.statlect.com/probability-distributions/normal-distribution>. Acesso em 02 mar 2024.
+
+- DEFINITION: GAUSSIAN DISTRIBUTION. Proof Wiki. Disponível em: <https://proofwiki.org/wiki/Definition:Gaussian_Distribution>. Acesso em 02 mar 2024.
+
+- TABOGA, Marco. ``Student's t distribution", Lectures on probability theory and mathematical statistics. Disponível em: <https://www.statlect.com/probability-distributions/student-t-distribution>. Acesso em 02 mar 2024.
+
+- TABOGA, Marco. ``F distribution", Lectures on probability theory and mathematical statistics. Disponível em: <https://www.statlect.com/probability-distributions/F-distribution>. Acesso em 02 mar 2024.
+
+- SIEGRIST, Kyle. ``The Beta Distribution''. LibreTexts Statistics. Disponível em: <https://stats.libretexts.org/Bookshelves/Probability_Theory/Probability_Mathematical_Statistics_and_Stochastic_Processes_(Siegrist)/05%3A_Special_Distributions/5.17%3A_The_Beta_Distribution>. Acesso em 02 mar 2024.
+
+- FROST, Jim. ``Beta Distribution: Uses, Parameters \& Examples''. Statistics By Jim. Disponível em: <https://statisticsbyjim.com/probability/beta-distribution/>. Acesso em 02 mar 2024.
+
+- TABOGA, Marco. ``Beta distribution''. StatLect. Disponível em: <https://www.statlect.com/probability-distributions/beta-distribution>. Acesso em 02 mar 2024.
+
+- SIEGRIST, Kyle. ``The Pareto Distribution". LibreTexts Statistics. Disponível em: <https://stats.libretexts.org/Bookshelves/Probability_Theory/Probability_Mathematical_Statistics_and_Stochastic_Processes_(Siegrist)/05%3A_Special_Distributions/5.36%3A_The_Pareto_Distribution>. Acesso em 03 mar 2024.
+
+- PARETO DISTRIBUTION, PRICE'S LAW AND THE DISTRIBUTION OF WEALTH. Intuition - Medium. Disponível em: <https://medium.com/intuition/pareto-distribution-prices-law-and-the-distribution-of-wealth-55ed111820f>. Acesso em 03 mar 2024.
+
+- LOURENZUTTI, R., DUARTE, D. , CASTELLARES, F., AZEVEDO, M. "The Beta Truncated Pareto Distribution". EST UFMG. Disponível em: <https://www.est.ufmg.br/portal/wp-content/uploads/2023/01/174-rodolfo_parte2.pdf>. Acesso em 03 mar 2024.
+
+- CAMPOS, Magno Silvério. "Métodos Estocásticos da Engenharia I: Capítulo 4 - Principais Modelos Contínuos". UFOP.BR. Disponível em: <http://professor.ufop.br/sites/default/files/magno/files/capitulo_4_-_principais_modelos_continuos_1.pdf>. Acesso em 04 mar 2024.
+
+- LOGNORMAL DISTRIBUTION. NIST. Disponível em: <https://www.itl.nist.gov/div898/handbook/eda/section3/eda3669.htm>. Acesso em 15 mar 2024.
+
+- TABOGA, Marco. ``Log-normal distribution". StatLect. Disponível em: <https://www.statlect.com/probability-distributions/log-normal-distribution>. Acesso em 15 mar 2024.

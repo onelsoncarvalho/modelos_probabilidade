@@ -1,0 +1,169 @@
+# Distribuição de T-Student
+
+A distribuição T Student é uma distribuição de probabilidade estatística, publicada por um autor que se chamou Student, pseudônimo de William Sealy Gosset, que não podia usar seu verdadeiro nome para publicar trabalhos enquanto trabalhasse para a cervejaria Guinness. Em geral, essa distribuição é utilizada para pequenas amostras. Conforme o tamanho da amostra aumenta, seus valores críticos se aproximam dos valores críticos da distribuição normal, também conhecida como distribuição gaussiana.
+
+É uma distribuição também em forma de sino e simétrica em relação a média. A maior diferença é que sua utilização é para os casos em que as amostras são pequenas e o desvio-padrão da população é desconhecido. Como consequência, temos uma curva em forma de sino em que as caudas são mais pesadas do que as caudas de uma distribuição normal, ou seja, os extremos estão sob probabilidades maiores. As causas são mais finas quanto maiores os graus de liberdade.
+
+Suas aplicações vão desde a modelagem estatística até testes de hipóteses.
+
+::: {.definition .alert .alert-success}
+<strong>Definição</strong>
+Seja $X$ uma variável aleatória com distribuição padrão de T-Student, com $n$ graus de liberdade, ela pode ser escrito no seguinte raio:
+
+$$
+X = \frac{Z}{\sqrt{\chi_{n}^{2}/n}}
+$$
+Onde:
+
+- $Z$ tem distribuição normal padrão.
+- $\chi_{n}^{2}$ é uma variável aleatória Qui-Quadrado com $n$ graus de liberdade;
+- $Z$ e $\chi_{n}^{2}$ são independentes.
+:::
+
+::: {.definition .alert .alert-success}
+<strong>Definição</strong>
+Seja $X$ uma variável aleatória contínua, com suporte no conjunto de números reais $R_x = \mathbb{R}$, e sendo $n \in \mathbb{R_{++}}$. Dizemosq ue $X$ tem distribuição padrão de T-Student com $n$ graus de liberdade se e somente se sua função densidade de probabilidade $f(x)$ for dada por:
+
+$$
+f(x) = c\biggl(1 + \frac{x^2}{n}\biggr)^{-(n+1)/2}
+$$
+
+onde $c$ é a constante:
+
+$$
+c = \frac{1}{\sqrt{n}} \frac{1}{B\bigl(\frac{n}{2}, \frac{1}{2}\bigr)}
+$$
+
+e $B()$ é a função Beta.
+:::
+
+::: {.definition .alert .alert-success}
+<strong>Definição</strong>
+Seja $X$ uma variável aleatória contínua, com suporte no conjunto de números reais $R_{X} = \mathbb{R}$, e seja $\mu \in \mathbb{R}$, $\sigma^2 \in \mathbb{R}_{++}$ e $n \in \mathbb{R}_{++}$.
+Dizemos que $X$ tem distribuição de T-Student com média $\mu$, escala $\sigma^2$ e $n$ graus de liberdade se e somente se sua função densidade de probabilidade for dada por:
+
+$$
+f(x) = c\frac{1}{\sigma}\biggl(1 + \frac{(x - \mu)^2}{n\sigma^2}\biggr)^{-\frac{1}{2}(n+1)}
+$$
+
+Onde $c$ é a constante:
+
+$$
+c = \frac{1}{\sqrt{n}} \frac{1}{B\bigl(\frac{n}{2}, \frac{1}{2}\bigr)}
+$$
+
+e $B()$ é a função Beta.
+
+Denotamos que $X$ tem distribuição T-Student com média $\mu$, parâmetro de escala $\sigma^2$ e $n$ graus de liberdade por:
+
+$$
+X \sim T(\mu, \sigma^2, n)
+$$
+:::
+
+## Função de Distribuição Acumulada
+
+Não há fórmula simples para a função de distribuição acumulada de uma distribuição de T-Student **padrão**, pois não pode ser expressa em termos elementares.
+
+Assim como o caso padrão, a forma generalizada da distribuição de T-Student naõ tem fórmula simples.
+
+Pode ser resolvida com algoritmos computacionais.
+
+## Valor Esperado
+
+::: {.definition .alert .alert-success}
+<strong>Definição</strong>
+O valor esperado de uma variável aleatória $X$ com distribuição de T-Student padrão é bem definida somente para $n > 1$ e é igual a:
+
+$$
+E[X] = 0
+$$
+:::
+
+::: {.definition .alert .alert-success}
+<strong>Definição</strong>
+O valor esperado de uma variável aleatória $X$ com distribuição de T-Student é bem definida somente para $n > 1$ e é igual a:
+
+$$
+E[X] = \mu
+$$
+
+É uma consequência do fato de que $X = \mu + \sigma S$ (onde $S$ tem distribuição T-Student padrão) e a **linearidade** do valor esperado.
+
+$$
+E[X] = E[\mu + \sigma S] = \mu + \sigma E[S] = \mu + \sigma \cdot 0 = \mu
+$$
+
+E como podemos notar, $E[S]$ está definida somente para $n > 1$, e por consequência, $E[X]$ também está definida somente para $n > 1$.
+:::
+
+## Variância
+
+::: {.definition .alert .alert-success}
+<strong>Definição</strong>
+A variância de uma variável aleatória $X$ com distribuição de T-Student padrão é bem definida somente para $n > 2$ e é igual a:
+
+$$
+Var[X] = \frac{n}{n - 2}
+$$
+:::
+
+::: {.definition}
+Seja $X$ uma variável aleatória contínua, com distribuição de T-Student, com parâmetros $\mu$, $\sigma^2$ e $n$, sua variância é dada bem definida para $n > 2$ e é igual a
+
+$$
+Var[X] = \frac{n}{n - 2} \sigma^2
+$$
+
+Podemos chegar a essa conclusão usando a fórmula da transformação afim da variância em $X = \mu + \sigma S$ (onde $S$ é uma distribuição T-Student padrão):
+
+$$
+Var[X] = Var[\mu + \sigma S] = \sigma^{2} Var[S] = \sigma^2 \frac{n}{n-2}
+$$
+
+E como podemos notar, $Var[2]$ está bem definida somente para $n > 2$, portanto, $Var[X]$ também.
+:::
+
+## Função Geradora de Momentos
+
+Uma variável aleatória $X$ com distribuição padrão de T-Student não possui função geradora de momentos.
+
+Quando uma variável aleatória $X$ possui função geradora de momentos, então o k-ésimo momento de $X$ existe e é finito para qualquer $k \in \mathbb{n}$. Mas nós sabemos que o k-ésimo momento de $X$ existe somente para $k < n$. Portanto, $X$ não pode ter função geradora de momentos.
+
+Uma variável aleatória $X$ com distribuição de T-Student não possui função geradora de momentos. É uma consequência do fato de que $X = \mu + \sigma S$ (odne $S$ tem distribuição padrão de T-Student) e o fato de que a distribuição padrão de T-Student naõpossui função geradora de momentos.
+
+## Aplicação
+
+Suponha uma variável aleatória $X$ com distribuição T-Student, com média $\mu = 1$, parâmetro de escala $\sigma^2 = 4$ e $n = 6$ graus de liberdade.
+
+Calcule
+
+$$
+P(0 \leq X \leq 1)
+$$
+
+**Solução**
+
+Primeiramente, precisamos escrever a probabilidade em termos de função de distribuição acumulada:
+
+\begin{align}
+  P(0 \leq X \leq 1) = P(X \leq 1) - P(X < 0) \\
+  = P(X \leq 1) - P(X \leq 0) \\
+  = F_{X}(1) - F_{X}(0)
+\end{align}
+
+Agora, podemos expressar a função de distribuição acumulada de $X$, com uma variável aleatória $Z$, com distribuição de $T-Student$ com $n = 6$ graus de liberdade.
+
+\begin{align}
+  F_{X}(x) = F_{Z}\biggl(\frac{x- 1}{2}\biggr)
+\end{align}
+
+então,
+
+\begin{align}
+  P(0 \leq X \leq 1) = F_{X}(1) - F_{X}(0) \\
+  = F_{Z}(0) - F_{Z}\biggl(- \frac{1}{2}\biggr) \\
+  = 0.1826
+\end{align}
+
+onde a diferença $F_{Z}(0) - F_{Z}(-1/2)$ resulta em: 0.1826.

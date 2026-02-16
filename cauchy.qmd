@@ -1,0 +1,154 @@
+# Distribuição de Cauchy
+
+É uma distribuição contínua, definida por seus parâmetros de escala e localização. É também denominada de Lorentziana é a distribuição do quociente de variáveis normais padrão independentes. Na física,
+
+Uma de suas principais utilidades é testar se técnicas robustas funcionam bem sob uma variedade de hipóteses de distribuição. A distribuição de Cauchy é normalmente usada na Física, é conhecida também como distribuição de Lorentz ou Breit-Wigner, e é importante por que é a solução de uma equação diferencial que descreve a ressonância forçada.
+
+A distribuição Cauchy é representada por uma curva em forma de sino, semelhante a uma distribuição normal, no entanto, na distribuição Cauchy, as caudas se aproximam de zero mais lentamente do que as caudas da distribuição normal.
+
+::: {.definition .alert .alert-success}
+<strong>Definição</strong>
+
+A distribuição padrão de Cauchy é uma distribuição contínua em $\mathbb{R}$ com função de densidade de probabilidade $g$ dada por
+
+$$
+g(x) = \frac{1}{\pi \left(1 + x^2\right)}, \quad x \in \mathbb{R}
+$$
+
+- $g$ é simétrica em relação a $x = 0$
+- $g$ aumenta e depois diminui, com modo em $x = 0$
+- $g$ é côncava para cima, depois para baixo e depois para cima novamente, com pontos de inflexão em $x = \pm \frac{1}{\sqrt{3}}$
+- $g(x) \to 0$ quando $x \to \infty$ e quando $x \to -\infty$
+
+**Provando:**
+
+Note que
+
+$$
+\int_{-\infty}^\infty \frac{1}{1 + x^2} \, dx = \arctan x \biggm|_{-\infty}^\infty = \frac{\pi}{2} - \left(-\frac{\pi}{2}\right) = \pi
+$$
+
+e, portanto, $g$ é uma PDF. As partes (a) a (d) seguem do cálculo básico.
+:::
+
+**Forma Generalizada da Distribuição de Cauchy**
+
+Suponha que $X$ tenha a distribuição de Cauchy com parâmetro de localização $a \in \mathbb{R}$ e parâmetro de escala $b \in (0, \infty)$.
+
+$X$ tem função de densidade de probabilidade $f$ dada por
+
+$$
+f(x) = \frac{b}{\pi [b^2 + (x - a)^2]}, \quad x \in \mathbb{R}
+$$
+
+
+- $f$ é simétrica em relação a $x = a$.
+- $f$ aumenta e depois diminui, com a moda $x = a$.
+- $f$ é côncava para cima, depois para baixo e depois para cima novamente, com pontos de inflexão em $x = a \pm \frac{1}{\sqrt{3}} b$.
+- $f(x) \to 0$ conforme $x \to \infty$ e conforme $x \to -\infty$.
+
+## Função de Distribuição Acumulada
+
+A função de distribuição acumulada padrão da distribuição de Cauchy, $G$, é dada por $G(x) = \frac{1}{2} + \frac{1}{\pi} \arctan x$ para $x \in \mathbb{R}$.
+
+**Prova**
+
+Para $x \in \mathbb{R}$,
+
+$$
+G(x) = \int_{-\infty}^x g(t) \, dt = \frac{1}{\pi} \arctan t \biggm|_{-\infty}^x = \frac{1}{\pi} \arctan x + \frac{1}{2}
+$$
+
+A função quantil padrão de Cauchy, $G^{-1}$, é dada por
+
+$$
+G^{-1}(p) = \tan\left[\pi\left(p - \frac{1}{2}\right)\right]
+$$
+
+para $p \in (0, 1)$. Em particular,
+
+
+- O primeiro quartil é $G^{-1}\left(\frac{1}{4}\right) = -1$
+- A mediana é $G^{-1}\left(\frac{1}{2}\right) = 0$
+- O terceiro quartil é $G^{-1}\left(\frac{3}{4}\right) = 1$
+
+
+**Provando**
+
+Como de costume, $G^{-1}$ é calculado a partir da CDF $G$ resolvendo $G(x) = p$ para $x$ em termos de $p$.
+
+**Função de Distribuição Acumulada Generalizada**
+
+A variável aleatória $X$ tem função de distribuição acumulada $F$ dada por
+
+$$
+F(x) = \frac{1}{2} + \frac{1}{\pi} \arctan\left(\frac{x - a}{b} \right), \quad x \in \mathbb{R}
+$$
+
+Lembrando que
+
+$$
+F(x) = G\left(\frac{x - a}{b}\right)
+$$
+
+onde $G$ é a função de distribuição acumulada padrão de Cauchy.
+
+**Demonstração**
+
+Lembre-se de que
+
+$$
+F(x) = G\left(\frac{x - a}{b}\right)
+$$
+
+onde $G$ é a função de distribuição acumulada padrão de Cauchy.
+
+**Função Quantil Generalizada**
+
+$X$ tem função quantil $F^{-1}$ dada por
+
+$$
+F^{-1}(p) = a + b \tan\left[\pi \left(p - \frac{1}{2}\right)\right], \quad p \in (0, 1)
+$$
+
+Em particular,
+
+\begin{itemize}
+    \item O primeiro quartil é $F^{-1}\left(\frac{1}{4}\right) = a - b$.
+    \item A mediana é $F^{-1}\left(\frac{1}{2}\right) = a$.
+    \item O terceiro quartil é $F^{-1}\left(\frac{3}{4}\right) = a + b$.
+\end{itemize}
+
+**Provando**
+
+Lembre-se de que $F^{-1}(p) = a + b G^{-1}(p)$, onde $G^{-1}$ é a função quantil padrão de Cauchy.
+
+## Valor Esperado
+
+A esperança de $X$, denotada por $E(X)$, não existe.
+
+Pela definição,
+
+$$
+E(X) = \int_{-\infty}^\infty x g(x) \, dx
+$$
+
+Para que a integral imprópria exista, mesmo como um número real estendido, pelo menos uma das integrais $\int_{-\infty}^a x g(x) \, dx$ e $\int_a^\infty x g(x) \, dx$ deve ser finita, para algum (e, portanto, para qualquer) $a \in \mathbb{R}$. Mas por uma simples substituição,
+
+$$
+\int_a^\infty x g(x) \, dx = \int_a^\infty x \frac{1}{\pi (1 + x^2)} \, dx = \frac{1}{2 \pi} \ln(1 + x^2) \biggm|_a^\infty = \infty
+$$
+
+e similarmente,
+
+$$
+\int_{-\infty}^a x g(x) \, dx = -\infty
+$$
+
+## Variância
+
+Como a esperança não existe, a variância é indefinida. Portanto, não há variância para a distribuição de Cauchy.
+
+## Função Geradora de Momentos
+
+Como a esperança de $X$ não existe, então a função geradora de momentos também não está definida.

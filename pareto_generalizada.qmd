@@ -1,0 +1,98 @@
+# Distribuição de Pareto Generalizada
+
+::: {.definition .alert .alert-success}
+**Definição**
+
+Seja $X$ uma variável aleatória contínua que segue Distribuição de Pareto, com parâmetro de forma $\alpha \in (0, \infty)$ e parâmetro de escala $\beta \in (0, \infty)$, denotada por $X \sim Pareto(\alpha, \beta)$, sua função densidade de probabilidade é dada por:
+
+$$
+f(x) = \frac{\alpha\beta^{\alpha}}{x^{\alpha + 1}}, \quad x \in [\beta, \infty)
+$$
+
+:::
+
+## Função de Distribuição Acumulada
+
+::: {.definition .alert .alert-success}
+**Definição**
+
+Seja $X$ uma variável aleatória contínua, $X \sim Pareto(\alpha, \beta)$, onde o parâmetro de forma $\alpha \in (0, \infty)$ e o parâmetro de escala $\beta \in (0, \infty)$. Sua função de Distribuição é dada por:
+
+$$
+F(x) = 1 - \biggl(\frac{\beta}{x}\biggr)^{\alpha}, \quad x \in [\beta, \infty]
+$$
+
+:::
+
+::: {.definition .alert .alert-success}
+**Definição**
+
+A função quantil da distribuição de Pareto Generalizada é dado por:
+
+$$
+F^{-1}(p) = \frac{\beta}{(1 - p)^{1/\alpha}}, \quad p \in [0, 1)
+$$
+
+:::
+
+- $q_{1} = \beta\biggl(\frac{4}{3}\biggr)^{1/\alpha}$
+- $q_{2} = 2\beta^{1/\alpha}$
+- $q_{3} = 4\beta^{1/\alpha}$
+
+## Momentos
+
+::: {.definition .alert .alert-success}
+**Definição**
+
+Suponha que $X$ tem distribuição de Pareto com parâmetro de forma $\alpha \in (0, \infty)$ e parâmetro de escala $\beta \in (0, \infty)$, os momentos de $X$ são dados por
+
+$$
+E(X^{n}) =
+\begin{cases}
+b^{n} \frac{\alpha}{\alpha - n}, \quad 0 < n < \alpha \\
+\infty, \quad n \geq \alpha
+\end{cases}
+$$
+
+:::
+
+## Valor Esperado
+
+::: {.definition .alert .alert-success}
+**Definição**
+
+Seja $X$ uma variável aleatória com distribuição de Pareto Generalizada, com parâmetro de forma $\alpha$, e parâmetro de escala $\beta$ seu valor esperado é dado por:
+
+$$
+E(X) = \beta \cdot \frac{\alpha}{\alpha - 1}, \quad \alpha > 1
+$$
+
+:::
+
+## Variância
+
+::: {.definition .alert .alert-success}
+**Definição**
+
+Seja $X$ uma variável aleatória com distribuição de Pareto Generalizada, com parâmetro de forma $\alpha$ e parâmetro de escala $\beta$, sua variância é dada por:
+
+$$
+Var(X) = E(X^2) - [E(X)]^{2} = \beta^{2} \cdot \frac{\alpha}{(\alpha - 1)^{2}(\alpha - 2)}, \quad \alpha > 2
+$$
+
+:::
+
+## Distribuição de Pareto
+
+## Aplicações
+
+- Utilizada amplamente para modelar variáveis aleatórias que apresentam o comportamento de caudas pesadas
+- Economia, Ciências Sociais, Meteorologia
+- Distribuição de Renda
+
+## Variáveis que podem ter distribuição de Pareto
+
+- Perdas em seguros
+- Atrasos em transmissão de dados na internet
+- Dados hidrológicos
+- Tamanhos de terremotos

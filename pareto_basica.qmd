@@ -1,0 +1,108 @@
+# Distribuição de Pareto Básica
+
+Em 1896, Vilfred Pareto notou que a distribuição dos lucros segue uma "Lei de Potência (universalidade na natureza)".
+
+- O princípio de Pareto
+- Joseph Moses Juran sugeriu o Princípio de Pareto, baseado nas observações do sociólogo e economista italiano Vilfred Pareto
+- Regra 80/20: Num cultivo de ervilhas observado, apenas 20\% das vagens produziam cerca de 80\% das ervilhas.
+- 4/5 das terras da Itália pertenciam a 1/5 da população.
+- Universalidade das aplicações da regra
+
+## Função de Distribuição Acumulada
+
+::: {.definition .alert .alert-success}
+**Definição**
+
+A distribuição de Pareto básica, com parâmetro de forma $\alpha \in (0, \infty)$ é uma distribuição contínua em $[1, \infty]$ com função de distribuição $G$ dada por
+
+$$
+G(z) = 1 - \frac{1}{z^{a}}, \quad z \in [1, \infty]
+$$
+
+O caso especial $\alpha = 1$ nos fornece a distribuição de Pareto **padrão**.
+
+:::
+
+## Função Densidade de Probabilidade
+
+::: {.definition .alert .alert-success}
+**Definição**
+
+Seja $Z$ uma variável aleatória contínua com distribuição de Pareto básica, sua função densidade de probabilidade é dada por:
+
+$$
+g(z) = \frac{\alpha}{z^{\alpha + 1}}, \quad z \in [1, \infty]
+$$
+
+Onde: $g$ é decrescente com $z = 1$ e $g$ tem concavidade para cima.
+
+:::
+
+## Função Quantil
+
+A função quantil da distribuição básica de Pareto é dada por:
+
+::: {.definition .alert .alert-success}
+**Definição**
+
+$$
+G^{-1} = \frac{1}{(1 - p)^{1/\alpha}}, \quad p \in [0, 1)
+$$
+
+:::
+
+- O primeiro quartil $q_{1} = \biggl(\frac{4}{3}\biggr)^{1/\alpha}$
+- A mediana $q_{2} = 2^{1/\alpha}$
+- O terceiro quartil $q_{3} = 4^{1/\alpha}$
+
+## Momentos
+
+::: {.definition .alert .alert-success}
+**Definição**
+
+Seja $Z$ uma variável aleatória com a distribuição de Pareto básica, com parâmetro de forma $\alpha \in (0, \infty)$. Os momentos de $Z$ (ao redor de 0), pela definição:
+
+$$
+E(Z^{n}) = \int_{1}^{\infty} z^{n} \frac{\alpha}{z^{\alpha + 1}}dz = \int_{1}^{\infty} \alpha z^{-(\alpha + 1 -n)}dz
+$$
+
+Diverge para infinito se $\alpha + 1 - n \leq 1$  e se avalia em $\frac{\alpha}{\alpha - n}$ se $\alpha + 1 - n > 1$.
+
+Portanto,
+
+$$
+E(Z^{n}) =
+\begin{cases}
+\frac{\alpha}{\alpha - n} & 0 < n < \alpha \\
+\infty, & n \geq a\
+\end{cases}
+$$
+:::
+
+## Valor Esperado
+
+::: {.definition .alert .alert-success}
+**Definição**
+
+Seja $Z$ uma variável aleatória com distribuição de Pareto básica, com parâmetro de forma $\alpha$, seu valor esperado é dado por:
+
+$$
+E(Z) = \frac{\alpha}{\alpha - 1}, \quad \alpha > 1
+$$
+
+:::
+
+## Variância
+
+::: {.definition .alert .alert-success}
+**Definição**
+
+Seja $Z$ uma variável aleatória com distribuição de Pareto básica, com parâmetro de forma $\alpha$, sua variância é dada por:
+
+$$
+Var(Z) = E(Z^2) - [E(Z)]^{2} = \frac{\alpha}{(\alpha - 1)^{2}(\alpha - 2)}
+$$
+
+Onde $\alpha > 2$.
+
+:::

@@ -1,0 +1,62 @@
+[
+  {
+    "objectID": "qui_quadrado.html",
+    "href": "qui_quadrado.html",
+    "title": "1  Distribuição Qui-Quadrado",
+    "section": "",
+    "text": "1.1 Função de Distribuição Acumulada\nA distribuição do qui-quadrado contínua, é especificada pelos graus de liberdade e o parâmetro de não centralidade. A distribuição é positivamente assimétrica, mas a assimetria diminui com mais graus de liberdade. Graus de liberdade, considerando um conjunto de dados qualquer, é o número de valores deste conjunto de dados que podem variar após terem sido impostas certas restrições a todos os valores. Muito poucas observações do mundo real seguem uma distribuição qui- quadrado. O principal objetivo das distribuições qui-quadrado é realizar testes de hipóteses, não descrever distribuições do mundo real. Em contraste, a maioria das outras distribuições amplamente utilizadas, como a distribuição normal ou a distribuição de Poisson, podem descrever coisas úteis, como o peso ao nascer de recém-nascidos ou o número de casos de doença por ano, respectivamente.\nA notação a seguir indica que \\(X\\) tem distribuição Qui-Quadrado, com \\(n\\) graus de liberdade: \\(X \\sim \\chi^{2}(n)\\)\nAtualmente, é possível utilizar algoritmos computacionais que calculam diretamente os valores de \\(F(X)\\). Antigamente, quando os computadores não eram tão acessíveis, costumavam procurar por valores de \\(F(X)\\) nas tabelas de Distribuição Qui-Quadrada, odne \\(F(X)\\) é registrada para diversos valores de \\(x\\) e \\(n\\).",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Distribuição Qui-Quadrado</span>"
+    ]
+  },
+  {
+    "objectID": "qui_quadrado.html#função-de-distribuição-acumulada",
+    "href": "qui_quadrado.html#função-de-distribuição-acumulada",
+    "title": "1  Distribuição Qui-Quadrado",
+    "section": "",
+    "text": "Definição\nSeja \\(X\\) uma variável aleatória contínua, com função de distribuição de probabilidade \\(f(x)\\), a Função de Distribuição Acumulada de X é dada por: \\[\n    F(X) = \\int_{0}^{x} f(t)dt\n  \\]\nMudança de variável: \\(s = t/2\\)\n\\[\n  \\begin{align}\n    F(x) = \\int_{-\\infty}^{x} f(t)dt \\\\\n    = \\int_{-\\infty}^{x} ct^{n/2-1} e^{\\bigl(-\\frac{1}{2}t\\bigr)}dt \\\\\n    = c \\int_{-\\infty}^{x/2} (2s)^{n/2-1} e^{-s}2ds \\\\\n    = c \\cdot 2^{n/2} \\int_{-\\infty}^{x/2} s^{n/2-1} e^{-s}ds \\\\\n    = \\frac{1}{2^{n/2}\\Gamma(n/2)} 2^{n/2} \\int_{-\\infty}^{x/2} s^{n/2-1} e^{-s}ds \\\\\n    = \\frac{1}{\\Gamma(n/2)} \\int_{-\\infty}^{x/2} s^{n/2-1} e^{-s}ds \\\\\n    = \\frac{\\gamma(n/2, x/2)}{\\Gamma(n/2)}\n  \\end{align}\n  \\]",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Distribuição Qui-Quadrado</span>"
+    ]
+  },
+  {
+    "objectID": "qui_quadrado.html#valor-esperado",
+    "href": "qui_quadrado.html#valor-esperado",
+    "title": "1  Distribuição Qui-Quadrado",
+    "section": "1.2 Valor Esperado",
+    "text": "1.2 Valor Esperado\n\nDefinição\nSeja \\(X\\) uma variável aleatória contínua com função densidade de probabilidade \\(f(x)\\), sua esperança (valor esperado) é dado por:\n\\[\n    E(X) = \\int_{0}^{\\infty} x \\cdot f(x) dx\n  \\]\nUsando a Integração Por Partes:\n\\[\n  \\begin{align}\n  E(X) = \\int_{0}^{\\infty} x \\cdot f(x)dx \\\\\n  = \\int_{0}^{\\infty} x \\cdot cx^{n/2-1} e^{\\bigl(-\\frac{1}{2}x\\bigr)}dx \\\\\n  = c \\int_{0}^{\\infty} x^{n/2} e^{\\bigl(-\\frac{1}{2}x \\bigr)}dx \\\\\n  = c \\biggl\\{\\biggl[-x^{n/2} 2e^{\\bigl(-\\frac{1}{2}x\\bigr)}\\biggr]_{0}^{\\infty}\\\\\n  + \\int_{0}^{\\infty} \\frac{n}{2} x^{n/2-1} 2e^{-\\bigl(\\frac{1}{2}x\\bigr)}dx\\biggr\\} \\\\\n  = c \\biggl\\{(0 -0) + n \\int_{0}^{\\infty} x^{n/2-1} e^{\\bigl(-\\frac{1}{2}x\\bigr)}dx \\biggr\\} \\\\\n  = n \\int_{0}^{\\infty} cx^{n/2-1} e^{\\bigl(-\\frac{1}{2}x\\bigr)}dx \\\\\n  = n \\int_{0}^{\\infty} f(x)dx \\\\\n  = n\n  \\end{align}\n  \\]\n\nPortanto, o Valor Esperado da Distribuição Qui-Quadrado é dado por: \\(E(X) = n\\).",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Distribuição Qui-Quadrado</span>"
+    ]
+  },
+  {
+    "objectID": "qui_quadrado.html#variância",
+    "href": "qui_quadrado.html#variância",
+    "title": "1  Distribuição Qui-Quadrado",
+    "section": "1.3 Variância",
+    "text": "1.3 Variância\n\nDefinição\nSeja \\(X\\) uma variável aleatória contínua com função densidade de probabilidade \\(f(x)\\), sua variância é dada por:\n\\[\n    Var(X) = E[X^2] - (E[X])^2\n  \\]\nUsando a Integração por Partes:\n\\[\n  \\begin{align}\n    E[X^2] = \\int_{0}^{\\infty} x^2 f(x)dx \\\\\n    = \\int_{0}^{\\infty} x^2 \\cdot cx^{n/2-1} e^{\\bigl(-\\frac{1}{2c}x\\bigr)}dx \\\\\n    = c \\int_{0}^{\\infty} x^{n/2+1} e^{\\bigl(-\\frac{1}{2}\\bigr)} = c \\biggl\\{\\biggl[-x^{n/2+1}e^{\\bigl(-\\frac{1}{2}x\\bigr)}\\biggr]_{0}^{\\infty} \\\\\n    + \\int_{0}^{\\infty} \\biggl(\\frac{n}{2} + 1\\biggr)x^{n/2} e^{\\bigl(-\\frac{1}{2}\\bigr)}dx \\biggr\\} \\\\\n    = c\\biggl\\{ (0-0)+(n+2) \\int_{0}^{\\infty} x^{n/2} e^{\\bigl(- \\frac{1}{2}x\\bigr)}dx \\biggr\\} \\\\\n    = c(n+2)\\biggl\\{\\int_{0}^{\\infty}x^{n/2} e^{\\bigl(-\\frac{1}{2}x\\bigr)}dx \\biggr\\} \\\\\n    = c(n+2)\\biggl\\{\\biggl[-x^{n/2} 2e^{\\bigl(-\\frac{1}{2}x\\bigr)}\\biggr]_{0}^{\\infty} + \\int_{0}^{\\infty}\\frac{n}{2}x^{n/2-1}  2e^{\\bigl(-\\frac{1}{2}x\\bigr)}dx \\biggr\\} \\\\\n    = c(n + 2)\\biggl\\{(0-0) + n \\int_{0}^{\\infty} x^{n/2-1} e^{\\bigl(- \\frac{1}{2}x\\bigr)}dx \\biggr\\} \\\\\n    = (n+ 2)n \\int_{0}^{\\infty} cx^{n/2-1} e^{\\bigl(-\\frac{1}{2}x\\bigr)}dx\n    = (n +2)n \\int_{0}^{\\infty}f(x)dx \\\\\n    = (n+2)n\n  \\end{align}\n  \\]\nDaí, temos que:\n\\[\n  \\begin{align*}\n    E[X]^2 = n^2 \\\\\n    Var[X] = E[X^2] - E[X]^2 \\\\\n    = (n+2)n - n^2 = n(n+2 - n) = 2n\n  \\end{align*}\n  \\]\n\nPortanto, \\(Var(X) = 2n\\).",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Distribuição Qui-Quadrado</span>"
+    ]
+  },
+  {
+    "objectID": "qui_quadrado.html#função-geradora-de-momentos",
+    "href": "qui_quadrado.html#função-geradora-de-momentos",
+    "title": "1  Distribuição Qui-Quadrado",
+    "section": "1.4 Função Geradora de Momentos",
+    "text": "1.4 Função Geradora de Momentos\n\nDefinição\nSeja \\(X\\) uma variável aleatória contínua. Se seu valor esperado \\(E(e^{tX})\\) existir, e for finito para todos os números reais \\(t\\) pertencendo a um intervalo fechado \\([-h, h] \\subseteq \\mathbb{R}\\), com \\(h &gt;0\\), dizemos que \\(X\\) possui função geradora de momentos:\n\\[\n  M_X(t) = E[e^{tX}]\n\\]\nDa definição da função geradora de momentos:\n\\[\nM_X(t) = E[e^{tX}] = \\int_0^\\infty e^{tx} f_X(x) \\, dx\n\\]\nEntão:\n\\[\n\\begin{align*}\n    M_X(t) &= \\frac{1}{2^{n / 2} \\Gamma(n / 2)} \\int_0^\\infty x^{(n / 2) - 1} e^{t x - (x / 2)} \\, dx \\\\\n    &= \\frac{1}{2^{n / 2} \\Gamma(n / 2)} \\int_0^\\infty x^{(n / 2) - 1} e^{-\\left(\\frac{1}{2} - t\\right) x} \\, dx\n\\end{align*}\n\\]\nSubstituindo \\(u = \\bigl(\\frac{1}{2} - t\\bigr)x\\)\n\\[\n\\begin{align*}\n    &\\frac{1}{2^{n / 2} \\Gamma(n / 2)} \\int_0^\\infty x^{(n / 2) - 1} e^{-\\left(\\frac{1}{2} - t\\right) x} \\, dx \\\\\n    &= \\frac{1}{2^{n / 2} \\Gamma(n / 2) \\left(\\frac{1}{2} - t\\right)} \\int_0^\\infty \\left(\\frac{u}{\\frac{1}{2} - t}\\right)^{(n / 2) - 1} e^{-u} \\, du \\\\\n    &= \\frac{1}{2^{n / 2} \\Gamma(n / 2) \\left(\\frac{1}{2} - t\\right)^{n / 2}} \\int_0^\\infty u^{(n / 2) - 1} e^{-u} \\, du \\\\\n    &= \\frac{\\Gamma(n / 2)}{\\Gamma(n / 2)} \\left(1 - 2t\\right)^{-n / 2} \\quad \\text{Definição da Função Gama} \\\\\n    &= \\left(1 - 2t\\right)^{-n / 2}\n\\end{align*}\n\\]\nPortanto, dado \\(X \\sim \\chi_{n}^{2}\\) onde \\(n\\) representa os graus de liberdade, a função geradora de momentos de \\(X\\) é:\n\\[\n  M_X(t) =\n  \\begin{dcases}\n    (1-2t)^{-n/2}, &\\quad t &lt; \\frac{1}{2} \\\\\n    \\text{ não existe}, &\\quad t \\geq \\frac{1}{2}\n  \\end{dcases}\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Distribuição Qui-Quadrado</span>"
+    ]
+  },
+  {
+    "objectID": "qui_quadrado.html#aplicação",
+    "href": "qui_quadrado.html#aplicação",
+    "title": "1  Distribuição Qui-Quadrado",
+    "section": "1.5 Aplicação",
+    "text": "1.5 Aplicação\nUm estatístico, estudando sobre a distribuição de frequências de eventos raros em uma determinada população, está empregando a distribuição do qui-quadrado para testar a independência de variáveis categóricas.\nO estatístico definiu uma variável aleatória\n\\[\n  X \\sim \\chi^{2}(3)\n\\]\nDetermine a Probabilidade de \\(X\\) estar entre \\(0.35\\) e \\(7.81\\).\nSolução:\n\\[\n\\begin{align}\n  P(0.35 \\leq X \\leq 7.81) = P(X \\leq 7.81) - P(X &lt; 0.35) \\\\\n  = P(X \\leq 7.81) - P(X \\leq 0.35) \\\\\n  = F(7.81) - F(0.35) \\\\\n  = 0.95 - 0.05 \\\\\n  = 0.90\n\\end{align}\n\\]\nPortanto, \\(P(0.35 \\leq X \\leq 7.81) = 0.90\\).",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Distribuição Qui-Quadrado</span>"
+    ]
+  }
+]
