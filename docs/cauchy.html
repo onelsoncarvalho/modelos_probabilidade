@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Nelson Geraldo Aquino de Carvalho">
-<meta name="dcterms.date" content="2024-03-16">
 
-<title>Modelos de Probabilidade</title>
+<title>3&nbsp; Distribuição de Cauchy – Modelos de Probabilidade</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./qui_quadrado.html" rel="next">
+<link href="./lognormal.html" rel="next">
+<link href="./t_student.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -71,6 +70,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -83,7 +111,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Sobre</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cauchy.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Distribuição de Cauchy</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -110,7 +138,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Sobre</span></a>
   </div>
 </li>
@@ -128,7 +156,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./cauchy.html" class="sidebar-item-text sidebar-link">
+  <a href="./cauchy.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Distribuição de Cauchy</span></span></a>
   </div>
 </li>
@@ -166,7 +194,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sobre" id="toc-sobre" class="nav-link active" data-scroll-target="#sobre">Sobre</a></li>
+  <li><a href="#função-de-distribuição-acumulada" id="toc-função-de-distribuição-acumulada" class="nav-link active" data-scroll-target="#função-de-distribuição-acumulada"><span class="header-section-number">3.1</span> Função de Distribuição Acumulada</a></li>
+  <li><a href="#valor-esperado" id="toc-valor-esperado" class="nav-link" data-scroll-target="#valor-esperado"><span class="header-section-number">3.2</span> Valor Esperado</a></li>
+  <li><a href="#variância" id="toc-variância" class="nav-link" data-scroll-target="#variância"><span class="header-section-number">3.3</span> Variância</a></li>
+  <li><a href="#função-geradora-de-momentos" id="toc-função-geradora-de-momentos" class="nav-link" data-scroll-target="#função-geradora-de-momentos"><span class="header-section-number">3.4</span> Função Geradora de Momentos</a></li>
   </ul>
 </nav>
     </div>
@@ -175,26 +206,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Modelos de Probabilidade</h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Distribuição de Cauchy</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Nelson Geraldo Aquino de Carvalho </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">March 16, 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -204,9 +223,108 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="sobre" class="level1 unnumbered">
-<h1 class="unnumbered">Sobre</h1>
-<p>Material de apoio feito por mim sobre distribuições de probabilidade :)</p>
+<p>É uma distribuição contínua, definida por seus parâmetros de escala e localização. É também denominada de Lorentziana é a distribuição do quociente de variáveis normais padrão independentes. Na física,</p>
+<p>Uma de suas principais utilidades é testar se técnicas robustas funcionam bem sob uma variedade de hipóteses de distribuição. A distribuição de Cauchy é normalmente usada na Física, é conhecida também como distribuição de Lorentz ou Breit-Wigner, e é importante por que é a solução de uma equação diferencial que descreve a ressonância forçada.</p>
+<p>A distribuição Cauchy é representada por uma curva em forma de sino, semelhante a uma distribuição normal, no entanto, na distribuição Cauchy, as caudas se aproximam de zero mais lentamente do que as caudas da distribuição normal.</p>
+<div class="definition alert alert-success">
+<p><strong>Definição</strong></p>
+<p>A distribuição padrão de Cauchy é uma distribuição contínua em <span class="math inline">\(\mathbb{R}\)</span> com função de densidade de probabilidade <span class="math inline">\(g\)</span> dada por</p>
+<p><span class="math display">\[
+g(x) = \frac{1}{\pi \left(1 + x^2\right)}, \quad x \in \mathbb{R}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(g\)</span> é simétrica em relação a <span class="math inline">\(x = 0\)</span></li>
+<li><span class="math inline">\(g\)</span> aumenta e depois diminui, com modo em <span class="math inline">\(x = 0\)</span></li>
+<li><span class="math inline">\(g\)</span> é côncava para cima, depois para baixo e depois para cima novamente, com pontos de inflexão em <span class="math inline">\(x = \pm \frac{1}{\sqrt{3}}\)</span></li>
+<li><span class="math inline">\(g(x) \to 0\)</span> quando <span class="math inline">\(x \to \infty\)</span> e quando <span class="math inline">\(x \to -\infty\)</span></li>
+</ul>
+<p><strong>Provando:</strong></p>
+<p>Note que</p>
+<p><span class="math display">\[
+\int_{-\infty}^\infty \frac{1}{1 + x^2} \, dx = \arctan x \biggm|_{-\infty}^\infty = \frac{\pi}{2} - \left(-\frac{\pi}{2}\right) = \pi
+\]</span></p>
+<p>e, portanto, <span class="math inline">\(g\)</span> é uma PDF. As partes (a) a (d) seguem do cálculo básico.</p>
+</div>
+<p><strong>Forma Generalizada da Distribuição de Cauchy</strong></p>
+<p>Suponha que <span class="math inline">\(X\)</span> tenha a distribuição de Cauchy com parâmetro de localização <span class="math inline">\(a \in \mathbb{R}\)</span> e parâmetro de escala <span class="math inline">\(b \in (0, \infty)\)</span>.</p>
+<p><span class="math inline">\(X\)</span> tem função de densidade de probabilidade <span class="math inline">\(f\)</span> dada por</p>
+<p><span class="math display">\[
+f(x) = \frac{b}{\pi [b^2 + (x - a)^2]}, \quad x \in \mathbb{R}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(f\)</span> é simétrica em relação a <span class="math inline">\(x = a\)</span>.</li>
+<li><span class="math inline">\(f\)</span> aumenta e depois diminui, com a moda <span class="math inline">\(x = a\)</span>.</li>
+<li><span class="math inline">\(f\)</span> é côncava para cima, depois para baixo e depois para cima novamente, com pontos de inflexão em <span class="math inline">\(x = a \pm \frac{1}{\sqrt{3}} b\)</span>.</li>
+<li><span class="math inline">\(f(x) \to 0\)</span> conforme <span class="math inline">\(x \to \infty\)</span> e conforme <span class="math inline">\(x \to -\infty\)</span>.</li>
+</ul>
+<section id="função-de-distribuição-acumulada" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="função-de-distribuição-acumulada"><span class="header-section-number">3.1</span> Função de Distribuição Acumulada</h2>
+<p>A função de distribuição acumulada padrão da distribuição de Cauchy, <span class="math inline">\(G\)</span>, é dada por <span class="math inline">\(G(x) = \frac{1}{2} + \frac{1}{\pi} \arctan x\)</span> para <span class="math inline">\(x \in \mathbb{R}\)</span>.</p>
+<p><strong>Prova</strong></p>
+<p>Para <span class="math inline">\(x \in \mathbb{R}\)</span>,</p>
+<p><span class="math display">\[
+G(x) = \int_{-\infty}^x g(t) \, dt = \frac{1}{\pi} \arctan t \biggm|_{-\infty}^x = \frac{1}{\pi} \arctan x + \frac{1}{2}
+\]</span></p>
+<p>A função quantil padrão de Cauchy, <span class="math inline">\(G^{-1}\)</span>, é dada por</p>
+<p><span class="math display">\[
+G^{-1}(p) = \tan\left[\pi\left(p - \frac{1}{2}\right)\right]
+\]</span></p>
+<p>para <span class="math inline">\(p \in (0, 1)\)</span>. Em particular,</p>
+<ul>
+<li>O primeiro quartil é <span class="math inline">\(G^{-1}\left(\frac{1}{4}\right) = -1\)</span></li>
+<li>A mediana é <span class="math inline">\(G^{-1}\left(\frac{1}{2}\right) = 0\)</span></li>
+<li>O terceiro quartil é <span class="math inline">\(G^{-1}\left(\frac{3}{4}\right) = 1\)</span></li>
+</ul>
+<p><strong>Provando</strong></p>
+<p>Como de costume, <span class="math inline">\(G^{-1}\)</span> é calculado a partir da CDF <span class="math inline">\(G\)</span> resolvendo <span class="math inline">\(G(x) = p\)</span> para <span class="math inline">\(x\)</span> em termos de <span class="math inline">\(p\)</span>.</p>
+<p><strong>Função de Distribuição Acumulada Generalizada</strong></p>
+<p>A variável aleatória <span class="math inline">\(X\)</span> tem função de distribuição acumulada <span class="math inline">\(F\)</span> dada por</p>
+<p><span class="math display">\[
+F(x) = \frac{1}{2} + \frac{1}{\pi} \arctan\left(\frac{x - a}{b} \right), \quad x \in \mathbb{R}
+\]</span></p>
+<p>Lembrando que</p>
+<p><span class="math display">\[
+F(x) = G\left(\frac{x - a}{b}\right)
+\]</span></p>
+<p>onde <span class="math inline">\(G\)</span> é a função de distribuição acumulada padrão de Cauchy.</p>
+<p><strong>Demonstração</strong></p>
+<p>Lembre-se de que</p>
+<p><span class="math display">\[
+F(x) = G\left(\frac{x - a}{b}\right)
+\]</span></p>
+<p>onde <span class="math inline">\(G\)</span> é a função de distribuição acumulada padrão de Cauchy.</p>
+<p><strong>Função Quantil Generalizada</strong></p>
+<p><span class="math inline">\(X\)</span> tem função quantil <span class="math inline">\(F^{-1}\)</span> dada por</p>
+<p><span class="math display">\[
+F^{-1}(p) = a + b \tan\left[\pi \left(p - \frac{1}{2}\right)\right], \quad p \in (0, 1)
+\]</span></p>
+<p>Em particular,</p>
+<p><strong>Provando</strong></p>
+<p>Lembre-se de que <span class="math inline">\(F^{-1}(p) = a + b G^{-1}(p)\)</span>, onde <span class="math inline">\(G^{-1}\)</span> é a função quantil padrão de Cauchy.</p>
+</section>
+<section id="valor-esperado" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="valor-esperado"><span class="header-section-number">3.2</span> Valor Esperado</h2>
+<p>A esperança de <span class="math inline">\(X\)</span>, denotada por <span class="math inline">\(E(X)\)</span>, não existe.</p>
+<p>Pela definição,</p>
+<p><span class="math display">\[
+E(X) = \int_{-\infty}^\infty x g(x) \, dx
+\]</span></p>
+<p>Para que a integral imprópria exista, mesmo como um número real estendido, pelo menos uma das integrais <span class="math inline">\(\int_{-\infty}^a x g(x) \, dx\)</span> e <span class="math inline">\(\int_a^\infty x g(x) \, dx\)</span> deve ser finita, para algum (e, portanto, para qualquer) <span class="math inline">\(a \in \mathbb{R}\)</span>. Mas por uma simples substituição,</p>
+<p><span class="math display">\[
+\int_a^\infty x g(x) \, dx = \int_a^\infty x \frac{1}{\pi (1 + x^2)} \, dx = \frac{1}{2 \pi} \ln(1 + x^2) \biggm|_a^\infty = \infty
+\]</span></p>
+<p>e similarmente,</p>
+<p><span class="math display">\[
+\int_{-\infty}^a x g(x) \, dx = -\infty
+\]</span></p>
+</section>
+<section id="variância" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="variância"><span class="header-section-number">3.3</span> Variância</h2>
+<p>Como a esperança não existe, a variância é indefinida. Portanto, não há variância para a distribuição de Cauchy.</p>
+</section>
+<section id="função-geradora-de-momentos" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="função-geradora-de-momentos"><span class="header-section-number">3.4</span> Função Geradora de Momentos</h2>
+<p>Como a esperança de <span class="math inline">\(X\)</span> não existe, então a função geradora de momentos também não está definida.</p>
 
 
 </section>
@@ -613,10 +731,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./t_student.html" class="pagination-link" aria-label="Distribuição de T-Student">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Distribuição de T-Student</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./qui_quadrado.html" class="pagination-link" aria-label="Distribuição Qui-Quadrado">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Distribuição Qui-Quadrado</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./lognormal.html" class="pagination-link" aria-label="Distribuição Lognormal">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Distribuição Lognormal</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -24,3 +24,4 @@ bibliography: references.bib
 format:
   html:
     theme: cosmo
+    footer: "©2026 Nelson Geraldo Aquino de Carvalho — Modelos de Probabilidade"

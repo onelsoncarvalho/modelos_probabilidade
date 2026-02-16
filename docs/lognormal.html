@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Nelson Geraldo Aquino de Carvalho">
-<meta name="dcterms.date" content="2024-03-16">
 
-<title>Modelos de Probabilidade</title>
+<title>4&nbsp; Distribuição Lognormal – Modelos de Probabilidade</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./qui_quadrado.html" rel="next">
+<link href="./pareto_basica.html" rel="next">
+<link href="./cauchy.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -71,6 +70,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -83,7 +111,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Sobre</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lognormal.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Distribuição Lognormal</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -110,7 +138,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Sobre</span></a>
   </div>
 </li>
@@ -134,7 +162,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lognormal.html" class="sidebar-item-text sidebar-link">
+  <a href="./lognormal.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Distribuição Lognormal</span></span></a>
   </div>
 </li>
@@ -166,7 +194,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sobre" id="toc-sobre" class="nav-link active" data-scroll-target="#sobre">Sobre</a></li>
+  <li><a href="#função-de-distribuição-acumulada" id="toc-função-de-distribuição-acumulada" class="nav-link active" data-scroll-target="#função-de-distribuição-acumulada"><span class="header-section-number">4.1</span> Função de Distribuição Acumulada</a></li>
+  <li><a href="#função-quantil" id="toc-função-quantil" class="nav-link" data-scroll-target="#função-quantil"><span class="header-section-number">4.2</span> Função Quantil</a></li>
+  <li><a href="#valor-esperado" id="toc-valor-esperado" class="nav-link" data-scroll-target="#valor-esperado"><span class="header-section-number">4.3</span> Valor Esperado</a></li>
+  <li><a href="#variância" id="toc-variância" class="nav-link" data-scroll-target="#variância"><span class="header-section-number">4.4</span> Variância</a></li>
+  <li><a href="#função-geradora-de-momentos" id="toc-função-geradora-de-momentos" class="nav-link" data-scroll-target="#função-geradora-de-momentos"><span class="header-section-number">4.5</span> Função Geradora de Momentos</a></li>
+  <li><a href="#aplicações" id="toc-aplicações" class="nav-link" data-scroll-target="#aplicações"><span class="header-section-number">4.6</span> Aplicações</a></li>
   </ul>
 </nav>
     </div>
@@ -175,26 +208,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Modelos de Probabilidade</h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Distribuição Lognormal</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Nelson Geraldo Aquino de Carvalho </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">March 16, 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -204,9 +225,81 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="sobre" class="level1 unnumbered">
-<h1 class="unnumbered">Sobre</h1>
-<p>Material de apoio feito por mim sobre distribuições de probabilidade :)</p>
+<div class="definition alert alert-success">
+<p>Uma variável <span class="math inline">\(X\)</span> possui distribuição lognormal com função densidade de probabilidade <span class="math inline">\(f(x)\)</span> se e somente se sua função densidade de probabilidade for dada por:</p>
+<p><span class="math display">\[
+  f(x) = \frac{e^{-((ln((x-\theta)/m))^{2}/(2\sigma^{2}) )}}{(x-\theta)\sigma\sqrt{2\pi}} \quad x &gt; \theta; m, \sigma &gt; 0
+\]</span></p>
+<p>onde <span class="math inline">\(\sigma\)</span> é o parâmetro de forma (e o desvio padrão do log da distribuição), <span class="math inline">\(\theta\)</span> é o parâmetro de localização e <span class="math inline">\(m\)</span> é o parâmetro de escala (também é a mediana da distribuição).</p>
+</div>
+<p>Pode ser denotada por <span class="math inline">\(ln N(\mu, \sigma^{2})\)</span>.</p>
+<p>Se <span class="math inline">\(x = \theta\)</span>, então <span class="math inline">\(f(x) = 0\)</span>. O caso onde <span class="math inline">\(\sigma = 0\)</span> e <span class="math inline">\(m = 1\)</span> é chamado de distribuição lognormal padrão. O caso onde <span class="math inline">\(\theta\)</span> é igual a zero é chamado de Distribuição Lognormal de 2 parâmetros.</p>
+<div class="definition alert alert-success">
+<p>A equação para a distribuição lognormal padrão é dada por</p>
+<p><span class="math display">\[
+  f(x) = \frac{e^{-(ln(x)^{2} / 2\sigma^{2})}}{x\sigma\sqrt{2\pi}} \quad x &gt; 0; \sigma &gt; 0.
+\]</span></p>
+<p>Quando a distribuição lognormal é parametrizada (comumente) por</p>
+<p><span class="math display">\[
+  \mu = log(m)
+\]</span></p>
+<p>Onde o parâmetro <span class="math inline">\(\mu\)</span> é a média do log da distribuição. Se a parametrização <span class="math inline">\(\mu\)</span> é usada, então a função densidade de probabilidade da distribuição lognormal é dada por:</p>
+<p><span class="math display">\[
+  f(x) = \frac{e^{-(ln(x-\theta) - \mu)^{2} / (2\sigma^2)  }}{(x-\theta)\sigma\sqrt{2\pi}} \quad x &gt; \theta;\sigma&gt;0
+\]</span></p>
+<p>Onde <span class="math inline">\(m\)</span> é explicitamente o parâmetro de escala.</p>
+</div>
+<section id="função-de-distribuição-acumulada" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="função-de-distribuição-acumulada"><span class="header-section-number">4.1</span> Função de Distribuição Acumulada</h2>
+<div class="definition alert alert-success">
+<p>A função de distribuição acumulada de uma variável aleatória <span class="math inline">\(X\)</span> com distribuição lognormal é dada por:</p>
+<p><span class="math display">\[
+  F(x) = \Theta(\frac{ln(x)}{\sigma}) \quad x \geq 0; \sigma &gt; 0
+\]</span></p>
+<p>Onde <span class="math inline">\(\Theta\)</span> é a função de distribuição acumulada da distribuição normal.</p>
+</div>
+</section>
+<section id="função-quantil" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="função-quantil"><span class="header-section-number">4.2</span> Função Quantil</h2>
+<p>A fórmula para a função quantil de uma distribuição lognormal é dada por:</p>
+<p><span class="math display">\[
+  G(p) = e^{\sigma\Theta^{-1}(p)} \quad 0 \leq p &lt; 1; \sigma &gt; 0
+\]</span></p>
+<p>Onde <span class="math inline">\(\Theta^{-1}\)</span> é a função quantil da distribuição normal.</p>
+</section>
+<section id="valor-esperado" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="valor-esperado"><span class="header-section-number">4.3</span> Valor Esperado</h2>
+<div class="definition alert alert-success">
+<p>Seja <span class="math inline">\(X\)</span> uma variável aleatória contínua com distribuição lognormal, a média, por definição é dada por:</p>
+<p><span class="math display">\[\begin{align}
+    \int_{-\infty}^{\infty} x \cdot f(x)dx \\
+    &amp;= \int_{0}^{\infty} x \cdot \frac{1}{x\sqrt{2\pi\sigma^{2}}} e^{-\frac{1}{2} \left(\frac{(ln(x) - \mu)^{2}}{\sigma^2}\right)}dx \\
+\end{align}\]</span> Após desenvolvermos a integral, podemos chegar em: <span class="math display">\[\begin{align}
+    &amp;= e^{(\mu + \frac{1}{2}\sigma^{2})} \int_{-\infty}^{\infty} \frac{1}{\sqrt{2\pi}}e^{(-\frac{1}{2}(t-\sigma)^{2})}dt \\
+    &amp;= e^{(\mu + \frac{1}{2}\sigma^{2})}
+\end{align}\]</span></p>
+<p>Portanto, a <span class="math inline">\(E(X) = e^{(\mu + \frac{1}{2}\sigma^{2})}\)</span>.</p>
+</div>
+</section>
+<section id="variância" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="variância"><span class="header-section-number">4.4</span> Variância</h2>
+<div class="definition alert alert-success">
+<p>Seja <span class="math inline">\(X\)</span> uma variável aleatória contínua com valor esperado <span class="math inline">\(E(X)\)</span>, sua esperança, pela definição, e no momento <span class="math inline">\(E(X^{2})\)</span> é dada por:</p>
+<p><span class="math display">\[\begin{align}
+    Var[X] = E[X^{2}] - E[X]^{2} \\
+    = e^{(2\sigma^{2} + 2\mu)} - \biggl[e^{(\mu + \frac{1}{2}\sigma^2)} \biggr]^{2} \\
+    = e^{(2\sigma^{2} + 2\mu)} - e^{(\sigma^{2} + 2\mu)}
+  \end{align}\]</span></p>
+</div>
+</section>
+<section id="função-geradora-de-momentos" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="função-geradora-de-momentos"><span class="header-section-number">4.5</span> Função Geradora de Momentos</h2>
+<p>A distribuição lognormal não possui Função Geradora de Momentos.</p>
+</section>
+<section id="aplicações" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="aplicações"><span class="header-section-number">4.6</span> Aplicações</h2>
+<p>Uma das principais áreas de aplicações da distribuição lognormal é na análise de preços de ações, onde a distribuição lognormal pode ser útil para identificar o retorno que determinada ação pode ter em determinado período de tempo.</p>
+<p>Note que a distribuição lognormal é inclinada com a cauda da direita longa por conta dos baixos valores da média e da alta variância das variáveis aleatórias.</p>
 
 
 </section>
@@ -613,10 +706,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./cauchy.html" class="pagination-link" aria-label="Distribuição de Cauchy">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Distribuição de Cauchy</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./qui_quadrado.html" class="pagination-link" aria-label="Distribuição Qui-Quadrado">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Distribuição Qui-Quadrado</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./pareto_basica.html" class="pagination-link" aria-label="Distribuição de Pareto Básica">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Distribuição de Pareto Básica</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

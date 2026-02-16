@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Nelson Geraldo Aquino de Carvalho">
-<meta name="dcterms.date" content="2024-03-16">
 
-<title>Modelos de Probabilidade</title>
+<title>2&nbsp; Distribuição de T-Student – Modelos de Probabilidade</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./qui_quadrado.html" rel="next">
+<link href="./cauchy.html" rel="next">
+<link href="./qui_quadrado.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -71,6 +70,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -83,7 +111,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Sobre</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./t_student.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Distribuição de T-Student</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -110,7 +138,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Sobre</span></a>
   </div>
 </li>
@@ -122,7 +150,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./t_student.html" class="sidebar-item-text sidebar-link">
+  <a href="./t_student.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Distribuição de T-Student</span></span></a>
   </div>
 </li>
@@ -166,7 +194,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sobre" id="toc-sobre" class="nav-link active" data-scroll-target="#sobre">Sobre</a></li>
+  <li><a href="#função-de-distribuição-acumulada" id="toc-função-de-distribuição-acumulada" class="nav-link active" data-scroll-target="#função-de-distribuição-acumulada"><span class="header-section-number">2.1</span> Função de Distribuição Acumulada</a></li>
+  <li><a href="#valor-esperado" id="toc-valor-esperado" class="nav-link" data-scroll-target="#valor-esperado"><span class="header-section-number">2.2</span> Valor Esperado</a></li>
+  <li><a href="#variância" id="toc-variância" class="nav-link" data-scroll-target="#variância"><span class="header-section-number">2.3</span> Variância</a></li>
+  <li><a href="#função-geradora-de-momentos" id="toc-função-geradora-de-momentos" class="nav-link" data-scroll-target="#função-geradora-de-momentos"><span class="header-section-number">2.4</span> Função Geradora de Momentos</a></li>
+  <li><a href="#aplicação" id="toc-aplicação" class="nav-link" data-scroll-target="#aplicação"><span class="header-section-number">2.5</span> Aplicação</a></li>
   </ul>
 </nav>
     </div>
@@ -175,26 +207,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Modelos de Probabilidade</h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Distribuição de T-Student</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Nelson Geraldo Aquino de Carvalho </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">March 16, 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -204,9 +224,123 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="sobre" class="level1 unnumbered">
-<h1 class="unnumbered">Sobre</h1>
-<p>Material de apoio feito por mim sobre distribuições de probabilidade :)</p>
+<p>A distribuição T Student é uma distribuição de probabilidade estatística, publicada por um autor que se chamou Student, pseudônimo de William Sealy Gosset, que não podia usar seu verdadeiro nome para publicar trabalhos enquanto trabalhasse para a cervejaria Guinness. Em geral, essa distribuição é utilizada para pequenas amostras. Conforme o tamanho da amostra aumenta, seus valores críticos se aproximam dos valores críticos da distribuição normal, também conhecida como distribuição gaussiana.</p>
+<p>É uma distribuição também em forma de sino e simétrica em relação a média. A maior diferença é que sua utilização é para os casos em que as amostras são pequenas e o desvio-padrão da população é desconhecido. Como consequência, temos uma curva em forma de sino em que as caudas são mais pesadas do que as caudas de uma distribuição normal, ou seja, os extremos estão sob probabilidades maiores. As causas são mais finas quanto maiores os graus de liberdade.</p>
+<p>Suas aplicações vão desde a modelagem estatística até testes de hipóteses.</p>
+<div class="definition alert alert-success">
+<p><strong>Definição</strong> Seja <span class="math inline">\(X\)</span> uma variável aleatória com distribuição padrão de T-Student, com <span class="math inline">\(n\)</span> graus de liberdade, ela pode ser escrito no seguinte raio:</p>
+<p><span class="math display">\[
+X = \frac{Z}{\sqrt{\chi_{n}^{2}/n}}
+\]</span> Onde:</p>
+<ul>
+<li><span class="math inline">\(Z\)</span> tem distribuição normal padrão.</li>
+<li><span class="math inline">\(\chi_{n}^{2}\)</span> é uma variável aleatória Qui-Quadrado com <span class="math inline">\(n\)</span> graus de liberdade;</li>
+<li><span class="math inline">\(Z\)</span> e <span class="math inline">\(\chi_{n}^{2}\)</span> são independentes.</li>
+</ul>
+</div>
+<div class="definition alert alert-success">
+<p><strong>Definição</strong> Seja <span class="math inline">\(X\)</span> uma variável aleatória contínua, com suporte no conjunto de números reais <span class="math inline">\(R_x = \mathbb{R}\)</span>, e sendo <span class="math inline">\(n \in \mathbb{R_{++}}\)</span>. Dizemosq ue <span class="math inline">\(X\)</span> tem distribuição padrão de T-Student com <span class="math inline">\(n\)</span> graus de liberdade se e somente se sua função densidade de probabilidade <span class="math inline">\(f(x)\)</span> for dada por:</p>
+<p><span class="math display">\[
+f(x) = c\biggl(1 + \frac{x^2}{n}\biggr)^{-(n+1)/2}
+\]</span></p>
+<p>onde <span class="math inline">\(c\)</span> é a constante:</p>
+<p><span class="math display">\[
+c = \frac{1}{\sqrt{n}} \frac{1}{B\bigl(\frac{n}{2}, \frac{1}{2}\bigr)}
+\]</span></p>
+<p>e <span class="math inline">\(B()\)</span> é a função Beta.</p>
+</div>
+<div class="definition alert alert-success">
+<p><strong>Definição</strong> Seja <span class="math inline">\(X\)</span> uma variável aleatória contínua, com suporte no conjunto de números reais <span class="math inline">\(R_{X} = \mathbb{R}\)</span>, e seja <span class="math inline">\(\mu \in \mathbb{R}\)</span>, <span class="math inline">\(\sigma^2 \in \mathbb{R}_{++}\)</span> e <span class="math inline">\(n \in \mathbb{R}_{++}\)</span>. Dizemos que <span class="math inline">\(X\)</span> tem distribuição de T-Student com média <span class="math inline">\(\mu\)</span>, escala <span class="math inline">\(\sigma^2\)</span> e <span class="math inline">\(n\)</span> graus de liberdade se e somente se sua função densidade de probabilidade for dada por:</p>
+<p><span class="math display">\[
+f(x) = c\frac{1}{\sigma}\biggl(1 + \frac{(x - \mu)^2}{n\sigma^2}\biggr)^{-\frac{1}{2}(n+1)}
+\]</span></p>
+<p>Onde <span class="math inline">\(c\)</span> é a constante:</p>
+<p><span class="math display">\[
+c = \frac{1}{\sqrt{n}} \frac{1}{B\bigl(\frac{n}{2}, \frac{1}{2}\bigr)}
+\]</span></p>
+<p>e <span class="math inline">\(B()\)</span> é a função Beta.</p>
+<p>Denotamos que <span class="math inline">\(X\)</span> tem distribuição T-Student com média <span class="math inline">\(\mu\)</span>, parâmetro de escala <span class="math inline">\(\sigma^2\)</span> e <span class="math inline">\(n\)</span> graus de liberdade por:</p>
+<p><span class="math display">\[
+X \sim T(\mu, \sigma^2, n)
+\]</span></p>
+</div>
+<section id="função-de-distribuição-acumulada" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="função-de-distribuição-acumulada"><span class="header-section-number">2.1</span> Função de Distribuição Acumulada</h2>
+<p>Não há fórmula simples para a função de distribuição acumulada de uma distribuição de T-Student <strong>padrão</strong>, pois não pode ser expressa em termos elementares.</p>
+<p>Assim como o caso padrão, a forma generalizada da distribuição de T-Student naõ tem fórmula simples.</p>
+<p>Pode ser resolvida com algoritmos computacionais.</p>
+</section>
+<section id="valor-esperado" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="valor-esperado"><span class="header-section-number">2.2</span> Valor Esperado</h2>
+<div class="definition alert alert-success">
+<p><strong>Definição</strong> O valor esperado de uma variável aleatória <span class="math inline">\(X\)</span> com distribuição de T-Student padrão é bem definida somente para <span class="math inline">\(n &gt; 1\)</span> e é igual a:</p>
+<p><span class="math display">\[
+E[X] = 0
+\]</span></p>
+</div>
+<div class="definition alert alert-success">
+<p><strong>Definição</strong> O valor esperado de uma variável aleatória <span class="math inline">\(X\)</span> com distribuição de T-Student é bem definida somente para <span class="math inline">\(n &gt; 1\)</span> e é igual a:</p>
+<p><span class="math display">\[
+E[X] = \mu
+\]</span></p>
+<p>É uma consequência do fato de que <span class="math inline">\(X = \mu + \sigma S\)</span> (onde <span class="math inline">\(S\)</span> tem distribuição T-Student padrão) e a <strong>linearidade</strong> do valor esperado.</p>
+<p><span class="math display">\[
+E[X] = E[\mu + \sigma S] = \mu + \sigma E[S] = \mu + \sigma \cdot 0 = \mu
+\]</span></p>
+<p>E como podemos notar, <span class="math inline">\(E[S]\)</span> está definida somente para <span class="math inline">\(n &gt; 1\)</span>, e por consequência, <span class="math inline">\(E[X]\)</span> também está definida somente para <span class="math inline">\(n &gt; 1\)</span>.</p>
+</div>
+</section>
+<section id="variância" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="variância"><span class="header-section-number">2.3</span> Variância</h2>
+<div class="definition alert alert-success">
+<p><strong>Definição</strong> A variância de uma variável aleatória <span class="math inline">\(X\)</span> com distribuição de T-Student padrão é bem definida somente para <span class="math inline">\(n &gt; 2\)</span> e é igual a:</p>
+<p><span class="math display">\[
+Var[X] = \frac{n}{n - 2}
+\]</span></p>
+</div>
+<div class="definition">
+<p>Seja <span class="math inline">\(X\)</span> uma variável aleatória contínua, com distribuição de T-Student, com parâmetros <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\sigma^2\)</span> e <span class="math inline">\(n\)</span>, sua variância é dada bem definida para <span class="math inline">\(n &gt; 2\)</span> e é igual a</p>
+<p><span class="math display">\[
+Var[X] = \frac{n}{n - 2} \sigma^2
+\]</span></p>
+<p>Podemos chegar a essa conclusão usando a fórmula da transformação afim da variância em <span class="math inline">\(X = \mu + \sigma S\)</span> (onde <span class="math inline">\(S\)</span> é uma distribuição T-Student padrão):</p>
+<p><span class="math display">\[
+Var[X] = Var[\mu + \sigma S] = \sigma^{2} Var[S] = \sigma^2 \frac{n}{n-2}
+\]</span></p>
+<p>E como podemos notar, <span class="math inline">\(Var[2]\)</span> está bem definida somente para <span class="math inline">\(n &gt; 2\)</span>, portanto, <span class="math inline">\(Var[X]\)</span> também.</p>
+</div>
+</section>
+<section id="função-geradora-de-momentos" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="função-geradora-de-momentos"><span class="header-section-number">2.4</span> Função Geradora de Momentos</h2>
+<p>Uma variável aleatória <span class="math inline">\(X\)</span> com distribuição padrão de T-Student não possui função geradora de momentos.</p>
+<p>Quando uma variável aleatória <span class="math inline">\(X\)</span> possui função geradora de momentos, então o k-ésimo momento de <span class="math inline">\(X\)</span> existe e é finito para qualquer <span class="math inline">\(k \in \mathbb{n}\)</span>. Mas nós sabemos que o k-ésimo momento de <span class="math inline">\(X\)</span> existe somente para <span class="math inline">\(k &lt; n\)</span>. Portanto, <span class="math inline">\(X\)</span> não pode ter função geradora de momentos.</p>
+<p>Uma variável aleatória <span class="math inline">\(X\)</span> com distribuição de T-Student não possui função geradora de momentos. É uma consequência do fato de que <span class="math inline">\(X = \mu + \sigma S\)</span> (odne <span class="math inline">\(S\)</span> tem distribuição padrão de T-Student) e o fato de que a distribuição padrão de T-Student naõpossui função geradora de momentos.</p>
+</section>
+<section id="aplicação" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="aplicação"><span class="header-section-number">2.5</span> Aplicação</h2>
+<p>Suponha uma variável aleatória <span class="math inline">\(X\)</span> com distribuição T-Student, com média <span class="math inline">\(\mu = 1\)</span>, parâmetro de escala <span class="math inline">\(\sigma^2 = 4\)</span> e <span class="math inline">\(n = 6\)</span> graus de liberdade.</p>
+<p>Calcule</p>
+<p><span class="math display">\[
+P(0 \leq X \leq 1)
+\]</span></p>
+<p><strong>Solução</strong></p>
+<p>Primeiramente, precisamos escrever a probabilidade em termos de função de distribuição acumulada:</p>
+<p><span class="math display">\[\begin{align}
+  P(0 \leq X \leq 1) = P(X \leq 1) - P(X &lt; 0) \\
+  = P(X \leq 1) - P(X \leq 0) \\
+  = F_{X}(1) - F_{X}(0)
+\end{align}\]</span></p>
+<p>Agora, podemos expressar a função de distribuição acumulada de <span class="math inline">\(X\)</span>, com uma variável aleatória <span class="math inline">\(Z\)</span>, com distribuição de <span class="math inline">\(T-Student\)</span> com <span class="math inline">\(n = 6\)</span> graus de liberdade.</p>
+<p><span class="math display">\[\begin{align}
+  F_{X}(x) = F_{Z}\biggl(\frac{x- 1}{2}\biggr)
+\end{align}\]</span></p>
+<p>então,</p>
+<p><span class="math display">\[\begin{align}
+  P(0 \leq X \leq 1) = F_{X}(1) - F_{X}(0) \\
+  = F_{Z}(0) - F_{Z}\biggl(- \frac{1}{2}\biggr) \\
+  = 0.1826
+\end{align}\]</span></p>
+<p>onde a diferença <span class="math inline">\(F_{Z}(0) - F_{Z}(-1/2)\)</span> resulta em: 0.1826.</p>
 
 
 </section>
@@ -613,10 +747,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./qui_quadrado.html" class="pagination-link" aria-label="Distribuição Qui-Quadrado">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Distribuição Qui-Quadrado</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./qui_quadrado.html" class="pagination-link" aria-label="Distribuição Qui-Quadrado">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Distribuição Qui-Quadrado</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./cauchy.html" class="pagination-link" aria-label="Distribuição de Cauchy">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Distribuição de Cauchy</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

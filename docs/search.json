@@ -1,5 +1,15 @@
 [
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Modelos de Probabilidade",
+    "section": "",
+    "text": "Sobre\nMaterial de apoio feito por mim sobre distribuições de probabilidade :)",
+    "crumbs": [
+      "Sobre"
+    ]
+  },
+  {
     "objectID": "qui_quadrado.html",
     "href": "qui_quadrado.html",
     "title": "1  Distribuição Qui-Quadrado",
@@ -57,6 +67,336 @@
     "text": "1.5 Aplicação\nUm estatístico, estudando sobre a distribuição de frequências de eventos raros em uma determinada população, está empregando a distribuição do qui-quadrado para testar a independência de variáveis categóricas.\nO estatístico definiu uma variável aleatória\n\\[\n  X \\sim \\chi^{2}(3)\n\\]\nDetermine a Probabilidade de \\(X\\) estar entre \\(0.35\\) e \\(7.81\\).\nSolução:\n\\[\n\\begin{align}\n  P(0.35 \\leq X \\leq 7.81) = P(X \\leq 7.81) - P(X &lt; 0.35) \\\\\n  = P(X \\leq 7.81) - P(X \\leq 0.35) \\\\\n  = F(7.81) - F(0.35) \\\\\n  = 0.95 - 0.05 \\\\\n  = 0.90\n\\end{align}\n\\]\nPortanto, \\(P(0.35 \\leq X \\leq 7.81) = 0.90\\).",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Distribuição Qui-Quadrado</span>"
+    ]
+  },
+  {
+    "objectID": "t_student.html",
+    "href": "t_student.html",
+    "title": "2  Distribuição de T-Student",
+    "section": "",
+    "text": "2.1 Função de Distribuição Acumulada\nA distribuição T Student é uma distribuição de probabilidade estatística, publicada por um autor que se chamou Student, pseudônimo de William Sealy Gosset, que não podia usar seu verdadeiro nome para publicar trabalhos enquanto trabalhasse para a cervejaria Guinness. Em geral, essa distribuição é utilizada para pequenas amostras. Conforme o tamanho da amostra aumenta, seus valores críticos se aproximam dos valores críticos da distribuição normal, também conhecida como distribuição gaussiana.\nÉ uma distribuição também em forma de sino e simétrica em relação a média. A maior diferença é que sua utilização é para os casos em que as amostras são pequenas e o desvio-padrão da população é desconhecido. Como consequência, temos uma curva em forma de sino em que as caudas são mais pesadas do que as caudas de uma distribuição normal, ou seja, os extremos estão sob probabilidades maiores. As causas são mais finas quanto maiores os graus de liberdade.\nSuas aplicações vão desde a modelagem estatística até testes de hipóteses.\nNão há fórmula simples para a função de distribuição acumulada de uma distribuição de T-Student padrão, pois não pode ser expressa em termos elementares.\nAssim como o caso padrão, a forma generalizada da distribuição de T-Student naõ tem fórmula simples.\nPode ser resolvida com algoritmos computacionais.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Distribuição de T-Student</span>"
+    ]
+  },
+  {
+    "objectID": "t_student.html#valor-esperado",
+    "href": "t_student.html#valor-esperado",
+    "title": "2  Distribuição de T-Student",
+    "section": "2.2 Valor Esperado",
+    "text": "2.2 Valor Esperado\n\nDefinição O valor esperado de uma variável aleatória \\(X\\) com distribuição de T-Student padrão é bem definida somente para \\(n &gt; 1\\) e é igual a:\n\\[\nE[X] = 0\n\\]\n\n\nDefinição O valor esperado de uma variável aleatória \\(X\\) com distribuição de T-Student é bem definida somente para \\(n &gt; 1\\) e é igual a:\n\\[\nE[X] = \\mu\n\\]\nÉ uma consequência do fato de que \\(X = \\mu + \\sigma S\\) (onde \\(S\\) tem distribuição T-Student padrão) e a linearidade do valor esperado.\n\\[\nE[X] = E[\\mu + \\sigma S] = \\mu + \\sigma E[S] = \\mu + \\sigma \\cdot 0 = \\mu\n\\]\nE como podemos notar, \\(E[S]\\) está definida somente para \\(n &gt; 1\\), e por consequência, \\(E[X]\\) também está definida somente para \\(n &gt; 1\\).",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Distribuição de T-Student</span>"
+    ]
+  },
+  {
+    "objectID": "t_student.html#variância",
+    "href": "t_student.html#variância",
+    "title": "2  Distribuição de T-Student",
+    "section": "2.3 Variância",
+    "text": "2.3 Variância\n\nDefinição A variância de uma variável aleatória \\(X\\) com distribuição de T-Student padrão é bem definida somente para \\(n &gt; 2\\) e é igual a:\n\\[\nVar[X] = \\frac{n}{n - 2}\n\\]\n\n\nSeja \\(X\\) uma variável aleatória contínua, com distribuição de T-Student, com parâmetros \\(\\mu\\), \\(\\sigma^2\\) e \\(n\\), sua variância é dada bem definida para \\(n &gt; 2\\) e é igual a\n\\[\nVar[X] = \\frac{n}{n - 2} \\sigma^2\n\\]\nPodemos chegar a essa conclusão usando a fórmula da transformação afim da variância em \\(X = \\mu + \\sigma S\\) (onde \\(S\\) é uma distribuição T-Student padrão):\n\\[\nVar[X] = Var[\\mu + \\sigma S] = \\sigma^{2} Var[S] = \\sigma^2 \\frac{n}{n-2}\n\\]\nE como podemos notar, \\(Var[2]\\) está bem definida somente para \\(n &gt; 2\\), portanto, \\(Var[X]\\) também.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Distribuição de T-Student</span>"
+    ]
+  },
+  {
+    "objectID": "t_student.html#função-geradora-de-momentos",
+    "href": "t_student.html#função-geradora-de-momentos",
+    "title": "2  Distribuição de T-Student",
+    "section": "2.4 Função Geradora de Momentos",
+    "text": "2.4 Função Geradora de Momentos\nUma variável aleatória \\(X\\) com distribuição padrão de T-Student não possui função geradora de momentos.\nQuando uma variável aleatória \\(X\\) possui função geradora de momentos, então o k-ésimo momento de \\(X\\) existe e é finito para qualquer \\(k \\in \\mathbb{n}\\). Mas nós sabemos que o k-ésimo momento de \\(X\\) existe somente para \\(k &lt; n\\). Portanto, \\(X\\) não pode ter função geradora de momentos.\nUma variável aleatória \\(X\\) com distribuição de T-Student não possui função geradora de momentos. É uma consequência do fato de que \\(X = \\mu + \\sigma S\\) (odne \\(S\\) tem distribuição padrão de T-Student) e o fato de que a distribuição padrão de T-Student naõpossui função geradora de momentos.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Distribuição de T-Student</span>"
+    ]
+  },
+  {
+    "objectID": "t_student.html#aplicação",
+    "href": "t_student.html#aplicação",
+    "title": "2  Distribuição de T-Student",
+    "section": "2.5 Aplicação",
+    "text": "2.5 Aplicação\nSuponha uma variável aleatória \\(X\\) com distribuição T-Student, com média \\(\\mu = 1\\), parâmetro de escala \\(\\sigma^2 = 4\\) e \\(n = 6\\) graus de liberdade.\nCalcule\n\\[\nP(0 \\leq X \\leq 1)\n\\]\nSolução\nPrimeiramente, precisamos escrever a probabilidade em termos de função de distribuição acumulada:\n\\[\\begin{align}\n  P(0 \\leq X \\leq 1) = P(X \\leq 1) - P(X &lt; 0) \\\\\n  = P(X \\leq 1) - P(X \\leq 0) \\\\\n  = F_{X}(1) - F_{X}(0)\n\\end{align}\\]\nAgora, podemos expressar a função de distribuição acumulada de \\(X\\), com uma variável aleatória \\(Z\\), com distribuição de \\(T-Student\\) com \\(n = 6\\) graus de liberdade.\n\\[\\begin{align}\n  F_{X}(x) = F_{Z}\\biggl(\\frac{x- 1}{2}\\biggr)\n\\end{align}\\]\nentão,\n\\[\\begin{align}\n  P(0 \\leq X \\leq 1) = F_{X}(1) - F_{X}(0) \\\\\n  = F_{Z}(0) - F_{Z}\\biggl(- \\frac{1}{2}\\biggr) \\\\\n  = 0.1826\n\\end{align}\\]\nonde a diferença \\(F_{Z}(0) - F_{Z}(-1/2)\\) resulta em: 0.1826.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Distribuição de T-Student</span>"
+    ]
+  },
+  {
+    "objectID": "cauchy.html",
+    "href": "cauchy.html",
+    "title": "3  Distribuição de Cauchy",
+    "section": "",
+    "text": "3.1 Função de Distribuição Acumulada\nÉ uma distribuição contínua, definida por seus parâmetros de escala e localização. É também denominada de Lorentziana é a distribuição do quociente de variáveis normais padrão independentes. Na física,\nUma de suas principais utilidades é testar se técnicas robustas funcionam bem sob uma variedade de hipóteses de distribuição. A distribuição de Cauchy é normalmente usada na Física, é conhecida também como distribuição de Lorentz ou Breit-Wigner, e é importante por que é a solução de uma equação diferencial que descreve a ressonância forçada.\nA distribuição Cauchy é representada por uma curva em forma de sino, semelhante a uma distribuição normal, no entanto, na distribuição Cauchy, as caudas se aproximam de zero mais lentamente do que as caudas da distribuição normal.\nForma Generalizada da Distribuição de Cauchy\nSuponha que \\(X\\) tenha a distribuição de Cauchy com parâmetro de localização \\(a \\in \\mathbb{R}\\) e parâmetro de escala \\(b \\in (0, \\infty)\\).\n\\(X\\) tem função de densidade de probabilidade \\(f\\) dada por\n\\[\nf(x) = \\frac{b}{\\pi [b^2 + (x - a)^2]}, \\quad x \\in \\mathbb{R}\n\\]\nA função de distribuição acumulada padrão da distribuição de Cauchy, \\(G\\), é dada por \\(G(x) = \\frac{1}{2} + \\frac{1}{\\pi} \\arctan x\\) para \\(x \\in \\mathbb{R}\\).\nProva\nPara \\(x \\in \\mathbb{R}\\),\n\\[\nG(x) = \\int_{-\\infty}^x g(t) \\, dt = \\frac{1}{\\pi} \\arctan t \\biggm|_{-\\infty}^x = \\frac{1}{\\pi} \\arctan x + \\frac{1}{2}\n\\]\nA função quantil padrão de Cauchy, \\(G^{-1}\\), é dada por\n\\[\nG^{-1}(p) = \\tan\\left[\\pi\\left(p - \\frac{1}{2}\\right)\\right]\n\\]\npara \\(p \\in (0, 1)\\). Em particular,\nProvando\nComo de costume, \\(G^{-1}\\) é calculado a partir da CDF \\(G\\) resolvendo \\(G(x) = p\\) para \\(x\\) em termos de \\(p\\).\nFunção de Distribuição Acumulada Generalizada\nA variável aleatória \\(X\\) tem função de distribuição acumulada \\(F\\) dada por\n\\[\nF(x) = \\frac{1}{2} + \\frac{1}{\\pi} \\arctan\\left(\\frac{x - a}{b} \\right), \\quad x \\in \\mathbb{R}\n\\]\nLembrando que\n\\[\nF(x) = G\\left(\\frac{x - a}{b}\\right)\n\\]\nonde \\(G\\) é a função de distribuição acumulada padrão de Cauchy.\nDemonstração\nLembre-se de que\n\\[\nF(x) = G\\left(\\frac{x - a}{b}\\right)\n\\]\nonde \\(G\\) é a função de distribuição acumulada padrão de Cauchy.\nFunção Quantil Generalizada\n\\(X\\) tem função quantil \\(F^{-1}\\) dada por\n\\[\nF^{-1}(p) = a + b \\tan\\left[\\pi \\left(p - \\frac{1}{2}\\right)\\right], \\quad p \\in (0, 1)\n\\]\nEm particular,\nProvando\nLembre-se de que \\(F^{-1}(p) = a + b G^{-1}(p)\\), onde \\(G^{-1}\\) é a função quantil padrão de Cauchy.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Distribuição de Cauchy</span>"
+    ]
+  },
+  {
+    "objectID": "cauchy.html#função-de-distribuição-acumulada",
+    "href": "cauchy.html#função-de-distribuição-acumulada",
+    "title": "3  Distribuição de Cauchy",
+    "section": "",
+    "text": "O primeiro quartil é \\(G^{-1}\\left(\\frac{1}{4}\\right) = -1\\)\nA mediana é \\(G^{-1}\\left(\\frac{1}{2}\\right) = 0\\)\nO terceiro quartil é \\(G^{-1}\\left(\\frac{3}{4}\\right) = 1\\)",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Distribuição de Cauchy</span>"
+    ]
+  },
+  {
+    "objectID": "cauchy.html#valor-esperado",
+    "href": "cauchy.html#valor-esperado",
+    "title": "3  Distribuição de Cauchy",
+    "section": "3.2 Valor Esperado",
+    "text": "3.2 Valor Esperado\nA esperança de \\(X\\), denotada por \\(E(X)\\), não existe.\nPela definição,\n\\[\nE(X) = \\int_{-\\infty}^\\infty x g(x) \\, dx\n\\]\nPara que a integral imprópria exista, mesmo como um número real estendido, pelo menos uma das integrais \\(\\int_{-\\infty}^a x g(x) \\, dx\\) e \\(\\int_a^\\infty x g(x) \\, dx\\) deve ser finita, para algum (e, portanto, para qualquer) \\(a \\in \\mathbb{R}\\). Mas por uma simples substituição,\n\\[\n\\int_a^\\infty x g(x) \\, dx = \\int_a^\\infty x \\frac{1}{\\pi (1 + x^2)} \\, dx = \\frac{1}{2 \\pi} \\ln(1 + x^2) \\biggm|_a^\\infty = \\infty\n\\]\ne similarmente,\n\\[\n\\int_{-\\infty}^a x g(x) \\, dx = -\\infty\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Distribuição de Cauchy</span>"
+    ]
+  },
+  {
+    "objectID": "cauchy.html#variância",
+    "href": "cauchy.html#variância",
+    "title": "3  Distribuição de Cauchy",
+    "section": "3.3 Variância",
+    "text": "3.3 Variância\nComo a esperança não existe, a variância é indefinida. Portanto, não há variância para a distribuição de Cauchy.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Distribuição de Cauchy</span>"
+    ]
+  },
+  {
+    "objectID": "cauchy.html#função-geradora-de-momentos",
+    "href": "cauchy.html#função-geradora-de-momentos",
+    "title": "3  Distribuição de Cauchy",
+    "section": "3.4 Função Geradora de Momentos",
+    "text": "3.4 Função Geradora de Momentos\nComo a esperança de \\(X\\) não existe, então a função geradora de momentos também não está definida.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Distribuição de Cauchy</span>"
+    ]
+  },
+  {
+    "objectID": "lognormal.html",
+    "href": "lognormal.html",
+    "title": "4  Distribuição Lognormal",
+    "section": "",
+    "text": "4.1 Função de Distribuição Acumulada\nPode ser denotada por \\(ln N(\\mu, \\sigma^{2})\\).\nSe \\(x = \\theta\\), então \\(f(x) = 0\\). O caso onde \\(\\sigma = 0\\) e \\(m = 1\\) é chamado de distribuição lognormal padrão. O caso onde \\(\\theta\\) é igual a zero é chamado de Distribuição Lognormal de 2 parâmetros.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Distribuição Lognormal</span>"
+    ]
+  },
+  {
+    "objectID": "lognormal.html#função-de-distribuição-acumulada",
+    "href": "lognormal.html#função-de-distribuição-acumulada",
+    "title": "4  Distribuição Lognormal",
+    "section": "",
+    "text": "A função de distribuição acumulada de uma variável aleatória \\(X\\) com distribuição lognormal é dada por:\n\\[\n  F(x) = \\Theta(\\frac{ln(x)}{\\sigma}) \\quad x \\geq 0; \\sigma &gt; 0\n\\]\nOnde \\(\\Theta\\) é a função de distribuição acumulada da distribuição normal.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Distribuição Lognormal</span>"
+    ]
+  },
+  {
+    "objectID": "lognormal.html#função-quantil",
+    "href": "lognormal.html#função-quantil",
+    "title": "4  Distribuição Lognormal",
+    "section": "4.2 Função Quantil",
+    "text": "4.2 Função Quantil\nA fórmula para a função quantil de uma distribuição lognormal é dada por:\n\\[\n  G(p) = e^{\\sigma\\Theta^{-1}(p)} \\quad 0 \\leq p &lt; 1; \\sigma &gt; 0\n\\]\nOnde \\(\\Theta^{-1}\\) é a função quantil da distribuição normal.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Distribuição Lognormal</span>"
+    ]
+  },
+  {
+    "objectID": "lognormal.html#valor-esperado",
+    "href": "lognormal.html#valor-esperado",
+    "title": "4  Distribuição Lognormal",
+    "section": "4.3 Valor Esperado",
+    "text": "4.3 Valor Esperado\n\nSeja \\(X\\) uma variável aleatória contínua com distribuição lognormal, a média, por definição é dada por:\n\\[\\begin{align}\n    \\int_{-\\infty}^{\\infty} x \\cdot f(x)dx \\\\\n    &= \\int_{0}^{\\infty} x \\cdot \\frac{1}{x\\sqrt{2\\pi\\sigma^{2}}} e^{-\\frac{1}{2} \\left(\\frac{(ln(x) - \\mu)^{2}}{\\sigma^2}\\right)}dx \\\\\n\\end{align}\\] Após desenvolvermos a integral, podemos chegar em: \\[\\begin{align}\n    &= e^{(\\mu + \\frac{1}{2}\\sigma^{2})} \\int_{-\\infty}^{\\infty} \\frac{1}{\\sqrt{2\\pi}}e^{(-\\frac{1}{2}(t-\\sigma)^{2})}dt \\\\\n    &= e^{(\\mu + \\frac{1}{2}\\sigma^{2})}\n\\end{align}\\]\nPortanto, a \\(E(X) = e^{(\\mu + \\frac{1}{2}\\sigma^{2})}\\).",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Distribuição Lognormal</span>"
+    ]
+  },
+  {
+    "objectID": "lognormal.html#variância",
+    "href": "lognormal.html#variância",
+    "title": "4  Distribuição Lognormal",
+    "section": "4.4 Variância",
+    "text": "4.4 Variância\n\nSeja \\(X\\) uma variável aleatória contínua com valor esperado \\(E(X)\\), sua esperança, pela definição, e no momento \\(E(X^{2})\\) é dada por:\n\\[\\begin{align}\n    Var[X] = E[X^{2}] - E[X]^{2} \\\\\n    = e^{(2\\sigma^{2} + 2\\mu)} - \\biggl[e^{(\\mu + \\frac{1}{2}\\sigma^2)} \\biggr]^{2} \\\\\n    = e^{(2\\sigma^{2} + 2\\mu)} - e^{(\\sigma^{2} + 2\\mu)}\n  \\end{align}\\]",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Distribuição Lognormal</span>"
+    ]
+  },
+  {
+    "objectID": "lognormal.html#função-geradora-de-momentos",
+    "href": "lognormal.html#função-geradora-de-momentos",
+    "title": "4  Distribuição Lognormal",
+    "section": "4.5 Função Geradora de Momentos",
+    "text": "4.5 Função Geradora de Momentos\nA distribuição lognormal não possui Função Geradora de Momentos.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Distribuição Lognormal</span>"
+    ]
+  },
+  {
+    "objectID": "lognormal.html#aplicações",
+    "href": "lognormal.html#aplicações",
+    "title": "4  Distribuição Lognormal",
+    "section": "4.6 Aplicações",
+    "text": "4.6 Aplicações\nUma das principais áreas de aplicações da distribuição lognormal é na análise de preços de ações, onde a distribuição lognormal pode ser útil para identificar o retorno que determinada ação pode ter em determinado período de tempo.\nNote que a distribuição lognormal é inclinada com a cauda da direita longa por conta dos baixos valores da média e da alta variância das variáveis aleatórias.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Distribuição Lognormal</span>"
+    ]
+  },
+  {
+    "objectID": "pareto_basica.html",
+    "href": "pareto_basica.html",
+    "title": "5  Distribuição de Pareto Básica",
+    "section": "",
+    "text": "5.1 Função de Distribuição Acumulada\nEm 1896, Vilfred Pareto notou que a distribuição dos lucros segue uma “Lei de Potência (universalidade na natureza)”.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Distribuição de Pareto Básica</span>"
+    ]
+  },
+  {
+    "objectID": "pareto_basica.html#função-de-distribuição-acumulada",
+    "href": "pareto_basica.html#função-de-distribuição-acumulada",
+    "title": "5  Distribuição de Pareto Básica",
+    "section": "",
+    "text": "Definição\nA distribuição de Pareto básica, com parâmetro de forma \\(\\alpha \\in (0, \\infty)\\) é uma distribuição contínua em \\([1, \\infty]\\) com função de distribuição \\(G\\) dada por\n\\[\nG(z) = 1 - \\frac{1}{z^{a}}, \\quad z \\in [1, \\infty]\n\\]\nO caso especial \\(\\alpha = 1\\) nos fornece a distribuição de Pareto padrão.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Distribuição de Pareto Básica</span>"
+    ]
+  },
+  {
+    "objectID": "pareto_basica.html#função-densidade-de-probabilidade",
+    "href": "pareto_basica.html#função-densidade-de-probabilidade",
+    "title": "5  Distribuição de Pareto Básica",
+    "section": "5.2 Função Densidade de Probabilidade",
+    "text": "5.2 Função Densidade de Probabilidade\n\nDefinição\nSeja \\(Z\\) uma variável aleatória contínua com distribuição de Pareto básica, sua função densidade de probabilidade é dada por:\n\\[\ng(z) = \\frac{\\alpha}{z^{\\alpha + 1}}, \\quad z \\in [1, \\infty]\n\\]\nOnde: \\(g\\) é decrescente com \\(z = 1\\) e \\(g\\) tem concavidade para cima.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Distribuição de Pareto Básica</span>"
+    ]
+  },
+  {
+    "objectID": "pareto_basica.html#função-quantil",
+    "href": "pareto_basica.html#função-quantil",
+    "title": "5  Distribuição de Pareto Básica",
+    "section": "5.3 Função Quantil",
+    "text": "5.3 Função Quantil\nA função quantil da distribuição básica de Pareto é dada por:\n\nDefinição\n\\[\nG^{-1} = \\frac{1}{(1 - p)^{1/\\alpha}}, \\quad p \\in [0, 1)\n\\]\n\n\nO primeiro quartil \\(q_{1} = \\biggl(\\frac{4}{3}\\biggr)^{1/\\alpha}\\)\nA mediana \\(q_{2} = 2^{1/\\alpha}\\)\nO terceiro quartil \\(q_{3} = 4^{1/\\alpha}\\)",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Distribuição de Pareto Básica</span>"
+    ]
+  },
+  {
+    "objectID": "pareto_basica.html#momentos",
+    "href": "pareto_basica.html#momentos",
+    "title": "5  Distribuição de Pareto Básica",
+    "section": "5.4 Momentos",
+    "text": "5.4 Momentos\n\nDefinição\nSeja \\(Z\\) uma variável aleatória com a distribuição de Pareto básica, com parâmetro de forma \\(\\alpha \\in (0, \\infty)\\). Os momentos de \\(Z\\) (ao redor de 0), pela definição:\n\\[\nE(Z^{n}) = \\int_{1}^{\\infty} z^{n} \\frac{\\alpha}{z^{\\alpha + 1}}dz = \\int_{1}^{\\infty} \\alpha z^{-(\\alpha + 1 -n)}dz\n\\]\nDiverge para infinito se \\(\\alpha + 1 - n \\leq 1\\) e se avalia em \\(\\frac{\\alpha}{\\alpha - n}\\) se \\(\\alpha + 1 - n &gt; 1\\).\nPortanto,\n\\[\nE(Z^{n}) =\n\\begin{cases}\n\\frac{\\alpha}{\\alpha - n} & 0 &lt; n &lt; \\alpha \\\\\n\\infty, & n \\geq a\\\n\\end{cases}\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Distribuição de Pareto Básica</span>"
+    ]
+  },
+  {
+    "objectID": "pareto_basica.html#valor-esperado",
+    "href": "pareto_basica.html#valor-esperado",
+    "title": "5  Distribuição de Pareto Básica",
+    "section": "5.5 Valor Esperado",
+    "text": "5.5 Valor Esperado\n\nDefinição\nSeja \\(Z\\) uma variável aleatória com distribuição de Pareto básica, com parâmetro de forma \\(\\alpha\\), seu valor esperado é dado por:\n\\[\nE(Z) = \\frac{\\alpha}{\\alpha - 1}, \\quad \\alpha &gt; 1\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Distribuição de Pareto Básica</span>"
+    ]
+  },
+  {
+    "objectID": "pareto_basica.html#variância",
+    "href": "pareto_basica.html#variância",
+    "title": "5  Distribuição de Pareto Básica",
+    "section": "5.6 Variância",
+    "text": "5.6 Variância\n\nDefinição\nSeja \\(Z\\) uma variável aleatória com distribuição de Pareto básica, com parâmetro de forma \\(\\alpha\\), sua variância é dada por:\n\\[\nVar(Z) = E(Z^2) - [E(Z)]^{2} = \\frac{\\alpha}{(\\alpha - 1)^{2}(\\alpha - 2)}\n\\]\nOnde \\(\\alpha &gt; 2\\).",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Distribuição de Pareto Básica</span>"
+    ]
+  },
+  {
+    "objectID": "pareto_generalizada.html",
+    "href": "pareto_generalizada.html",
+    "title": "6  Distribuição de Pareto Generalizada",
+    "section": "",
+    "text": "6.1 Função de Distribuição Acumulada",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Distribuição de Pareto Generalizada</span>"
+    ]
+  },
+  {
+    "objectID": "pareto_generalizada.html#função-de-distribuição-acumulada",
+    "href": "pareto_generalizada.html#função-de-distribuição-acumulada",
+    "title": "6  Distribuição de Pareto Generalizada",
+    "section": "",
+    "text": "Definição\nSeja \\(X\\) uma variável aleatória contínua, \\(X \\sim Pareto(\\alpha, \\beta)\\), onde o parâmetro de forma \\(\\alpha \\in (0, \\infty)\\) e o parâmetro de escala \\(\\beta \\in (0, \\infty)\\). Sua função de Distribuição é dada por:\n\\[\nF(x) = 1 - \\biggl(\\frac{\\beta}{x}\\biggr)^{\\alpha}, \\quad x \\in [\\beta, \\infty]\n\\]\n\n\nDefinição\nA função quantil da distribuição de Pareto Generalizada é dado por:\n\\[\nF^{-1}(p) = \\frac{\\beta}{(1 - p)^{1/\\alpha}}, \\quad p \\in [0, 1)\n\\]\n\n\n\\(q_{1} = \\beta\\biggl(\\frac{4}{3}\\biggr)^{1/\\alpha}\\)\n\\(q_{2} = 2\\beta^{1/\\alpha}\\)\n\\(q_{3} = 4\\beta^{1/\\alpha}\\)",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Distribuição de Pareto Generalizada</span>"
+    ]
+  },
+  {
+    "objectID": "pareto_generalizada.html#momentos",
+    "href": "pareto_generalizada.html#momentos",
+    "title": "6  Distribuição de Pareto Generalizada",
+    "section": "6.2 Momentos",
+    "text": "6.2 Momentos\n\nDefinição\nSuponha que \\(X\\) tem distribuição de Pareto com parâmetro de forma \\(\\alpha \\in (0, \\infty)\\) e parâmetro de escala \\(\\beta \\in (0, \\infty)\\), os momentos de \\(X\\) são dados por\n\\[\nE(X^{n}) =\n\\begin{cases}\nb^{n} \\frac{\\alpha}{\\alpha - n}, \\quad 0 &lt; n &lt; \\alpha \\\\\n\\infty, \\quad n \\geq \\alpha\n\\end{cases}\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Distribuição de Pareto Generalizada</span>"
+    ]
+  },
+  {
+    "objectID": "pareto_generalizada.html#valor-esperado",
+    "href": "pareto_generalizada.html#valor-esperado",
+    "title": "6  Distribuição de Pareto Generalizada",
+    "section": "6.3 Valor Esperado",
+    "text": "6.3 Valor Esperado\n\nDefinição\nSeja \\(X\\) uma variável aleatória com distribuição de Pareto Generalizada, com parâmetro de forma \\(\\alpha\\), e parâmetro de escala \\(\\beta\\) seu valor esperado é dado por:\n\\[\nE(X) = \\beta \\cdot \\frac{\\alpha}{\\alpha - 1}, \\quad \\alpha &gt; 1\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Distribuição de Pareto Generalizada</span>"
+    ]
+  },
+  {
+    "objectID": "pareto_generalizada.html#variância",
+    "href": "pareto_generalizada.html#variância",
+    "title": "6  Distribuição de Pareto Generalizada",
+    "section": "6.4 Variância",
+    "text": "6.4 Variância\n\nDefinição\nSeja \\(X\\) uma variável aleatória com distribuição de Pareto Generalizada, com parâmetro de forma \\(\\alpha\\) e parâmetro de escala \\(\\beta\\), sua variância é dada por:\n\\[\nVar(X) = E(X^2) - [E(X)]^{2} = \\beta^{2} \\cdot \\frac{\\alpha}{(\\alpha - 1)^{2}(\\alpha - 2)}, \\quad \\alpha &gt; 2\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Distribuição de Pareto Generalizada</span>"
+    ]
+  },
+  {
+    "objectID": "pareto_generalizada.html#distribuição-de-pareto",
+    "href": "pareto_generalizada.html#distribuição-de-pareto",
+    "title": "6  Distribuição de Pareto Generalizada",
+    "section": "6.5 Distribuição de Pareto",
+    "text": "6.5 Distribuição de Pareto",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Distribuição de Pareto Generalizada</span>"
+    ]
+  },
+  {
+    "objectID": "pareto_generalizada.html#aplicações",
+    "href": "pareto_generalizada.html#aplicações",
+    "title": "6  Distribuição de Pareto Generalizada",
+    "section": "6.6 Aplicações",
+    "text": "6.6 Aplicações\n\nUtilizada amplamente para modelar variáveis aleatórias que apresentam o comportamento de caudas pesadas\nEconomia, Ciências Sociais, Meteorologia\nDistribuição de Renda",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Distribuição de Pareto Generalizada</span>"
+    ]
+  },
+  {
+    "objectID": "pareto_generalizada.html#variáveis-que-podem-ter-distribuição-de-pareto",
+    "href": "pareto_generalizada.html#variáveis-que-podem-ter-distribuição-de-pareto",
+    "title": "6  Distribuição de Pareto Generalizada",
+    "section": "6.7 Variáveis que podem ter distribuição de Pareto",
+    "text": "6.7 Variáveis que podem ter distribuição de Pareto\n\nPerdas em seguros\nAtrasos em transmissão de dados na internet\nDados hidrológicos\nTamanhos de terremotos",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Distribuição de Pareto Generalizada</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "TABOGA, Marco. ``Uniform Distribution”, Lectures on Probability theory and mathematical statistics. Disponível em: https://www.statlect.com/probability-distributions/uniform-distribution. Acesso em 02 Mar 2024.\nTABOGA, Marco. ``Exponential Distribution”, Lectures on Probability theory and mathematical statistics. Disponível em: https://www.statlect.com/probability-distributions/exponential-distribution. Acesso em 02 Mar 2024.}\nGAMMA DISTRIBUTION. Probability Course. Disponível em: https://www.probabilitycourse.com/chapter4/4_2_4_Gamma_distribution.php}. Acesso em 02 Mar 2024.\nTABOGA, Marco. ``Chi-square distribution”, Lectures on Probability theory and mathematical statistics. Disponível em: https://www.statlect.com/probability-distributions/chi-square-distribution. Acesso em 02 Mar 2024.\nWEIBULL DISTRIBUTIONS. LibreTexts STATISTICS. Disponível em: https://stats.libretexts.org/Courses/Saint_Mary%27s_College_Notre_Dame/MATH_345__-_Probability_(Kuter)/4%3A_Continuous_Random_Variables/4.6%3A_Weibull_Distributions. Acesso em 02 mar 2024.\nEXPECTATION OF WEIBULL DISTRIBUTION. Proof Wiki. Disponível em: https://proofwiki.org/wiki/Expectation_of_Weibull_Distribution. Acesso em 02 mar 2024.\nRAW MOMENT OF WEIBULL DISTRIBUTION. Proof Wiki. Disponível em: https://proofwiki.org/wiki/Raw_Moment_of_Weibull_Distribution. Acesso em 02 mar 2024.\nVARIANCE OF WEIBULL DISTRIBUTION. Proof Wiki. Disponível em: https://proofwiki.org/wiki/Variance_of_Weibull_Distribution. Acesso em 02 mar 2024.\nDEFINITION: WEIBULL DISTRIBUTION. Proof Wiki. Disponível em: https://proofwiki.org/wiki/Definition:Weibull_Distribution. Acesso em 02 mar 2024.\nSIEGRIST, Kyle. ``The Cauchy Distribution”. LibreTexts STATISTICS. Disponível em: https://stats.libretexts.org/Bookshelves/Probability_Theory/Probability_Mathematical_Statistics_and_Stochastic_Processes_(Siegrist)/05%3A_Special_Distributions/5.32%3A_The_Cauchy_Distribution. Acesso em 02 mar 2024.\nDEFINITION: CAUCHY DISTRIBUTION. Proof Wiki. Disponível em: https://proofwiki.org/wiki/Definition:Cauchy_Distribution. Acesso em 02 mar 2024.\nSIEGRIST, Kyle. The Laplace Distribution. LibreTexts STATISTICS. Disponível em: https://stats.libretexts.org/Bookshelves/Probability_Theory/Probability_Mathematical_Statistics_and_Stochastic_Processes_(Siegrist)/05%3A_Special_Distributions/5.28%3A_The_Laplace_Distribution. Acesso em 02 mar 2024.\nTABOGA, Marco. ``Normal distribution”, Lectures on probability theory and mathematical statistics. Disponível em: https://www.statlect.com/probability-distributions/normal-distribution. Acesso em 02 mar 2024.\nDEFINITION: GAUSSIAN DISTRIBUTION. Proof Wiki. Disponível em: https://proofwiki.org/wiki/Definition:Gaussian_Distribution. Acesso em 02 mar 2024.\nTABOGA, Marco. ``Student’s t distribution”, Lectures on probability theory and mathematical statistics. Disponível em: https://www.statlect.com/probability-distributions/student-t-distribution. Acesso em 02 mar 2024.\nTABOGA, Marco. ``F distribution”, Lectures on probability theory and mathematical statistics. Disponível em: https://www.statlect.com/probability-distributions/F-distribution. Acesso em 02 mar 2024.\nSIEGRIST, Kyle. ``The Beta Distribution’’. LibreTexts Statistics. Disponível em: https://stats.libretexts.org/Bookshelves/Probability_Theory/Probability_Mathematical_Statistics_and_Stochastic_Processes_(Siegrist)/05%3A_Special_Distributions/5.17%3A_The_Beta_Distribution. Acesso em 02 mar 2024.\nFROST, Jim. ``Beta Distribution: Uses, Parameters & Examples’’. Statistics By Jim. Disponível em: https://statisticsbyjim.com/probability/beta-distribution/. Acesso em 02 mar 2024.\nTABOGA, Marco. ``Beta distribution’’. StatLect. Disponível em: https://www.statlect.com/probability-distributions/beta-distribution. Acesso em 02 mar 2024.\nSIEGRIST, Kyle. ``The Pareto Distribution”. LibreTexts Statistics. Disponível em: https://stats.libretexts.org/Bookshelves/Probability_Theory/Probability_Mathematical_Statistics_and_Stochastic_Processes_(Siegrist)/05%3A_Special_Distributions/5.36%3A_The_Pareto_Distribution. Acesso em 03 mar 2024.\nPARETO DISTRIBUTION, PRICE’S LAW AND THE DISTRIBUTION OF WEALTH. Intuition - Medium. Disponível em: https://medium.com/intuition/pareto-distribution-prices-law-and-the-distribution-of-wealth-55ed111820f. Acesso em 03 mar 2024.\nLOURENZUTTI, R., DUARTE, D. , CASTELLARES, F., AZEVEDO, M. “The Beta Truncated Pareto Distribution”. EST UFMG. Disponível em: https://www.est.ufmg.br/portal/wp-content/uploads/2023/01/174-rodolfo_parte2.pdf. Acesso em 03 mar 2024.\nCAMPOS, Magno Silvério. “Métodos Estocásticos da Engenharia I: Capítulo 4 - Principais Modelos Contínuos”. UFOP.BR. Disponível em: http://professor.ufop.br/sites/default/files/magno/files/capitulo_4_-_principais_modelos_continuos_1.pdf. Acesso em 04 mar 2024.\nLOGNORMAL DISTRIBUTION. NIST. Disponível em: https://www.itl.nist.gov/div898/handbook/eda/section3/eda3669.htm. Acesso em 15 mar 2024.\nTABOGA, Marco. ``Log-normal distribution”. StatLect. Disponível em: https://www.statlect.com/probability-distributions/log-normal-distribution. Acesso em 15 mar 2024.",
+    "crumbs": [
+      "References"
     ]
   }
 ]
