@@ -2,13 +2,16 @@ project:
   type: book
   output-dir: docs
   
+website:
+  site-url: https://onelsoncarvalho.github.io/modelos_probabilidade/
+  
 book:
   title: "Modelos de Probabilidade"
   author: "Nelson Geraldo Aquino de Carvalho"
   date: "03/16/2024"
   chapters:
     - index.qmd
-    # - summary.qmd
+    - summary.qmd
     - qui_quadrado.qmd
     - t_student.qmd
     - cauchy.qmd
